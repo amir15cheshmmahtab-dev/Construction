@@ -996,6 +996,51 @@ section[id] {
   font-size: 8px;
   margin-block-start: 5px;
 }
+.service-highlights {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 21px max(calc((100vw - 1280px) / 2), var(--page-gutter));
+  background: linear-gradient(125deg, #fbfaf6, #efe9df);
+  direction: rtl;
+}
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.service-item {
+  min-width: 0;
+  text-align: center;
+  padding-inline: 8px;
+  border-inline-start: 1px solid #d9d0c367;
+}
+.service-item:last-child {
+  border-inline-start: 0;
+}
+.service-item svg {
+  margin-inline: auto;
+  margin-block-end: 13px;
+}
+.service-item h3 {
+  font-size: 11px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+.service-item p {
+  font-size: 9px;
+  color: #706b64;
+  line-height: 1.8;
+  margin-block-start: 4px;
+}
+.services-note {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 14px;
+  text-align: center;
+  font-size: 8px;
+  color: var(--text-secondary);
+}
 .mobile-bottom-nav {
   display: none;
 }
@@ -1156,6 +1201,15 @@ section[id] {
   .business-copy h2 {
     font-size: 21px;
   }
+  .service-highlights {
+    padding-inline: 12px 24px;
+  }
+  .service-item {
+    padding-inline: 5px;
+  }
+  .service-item h3 {
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 1023px) {
@@ -1313,6 +1367,16 @@ section[id] {
   }
   .business-banner > img {
     object-position: center 50%;
+  }
+  .service-highlights {
+    min-height: 155px;
+    padding-inline: var(--page-gutter);
+  }
+  .service-item h3 {
+    font-size: 12px;
+  }
+  .service-item p {
+    font-size: 10px;
   }
 }
 
@@ -1684,6 +1748,32 @@ section[id] {
   .business-shade {
     background: linear-gradient(100deg, #111616fa 0%, #111616e8 43%, #11161610 85%);
   }
+  .service-highlights {
+    min-height: 131px;
+    padding-inline: 0;
+    background: var(--color-ivory);
+  }
+  .service-item {
+    padding-inline: 3px;
+  }
+  .service-item svg {
+    width: 23px;
+    height: 23px;
+    margin-block-end: 8px;
+  }
+  .service-item h3 {
+    font-size: 9px;
+    font-weight: 550;
+  }
+  .service-item p {
+    font-size: 7px;
+    margin-block-start: 3px;
+    white-space: nowrap;
+  }
+  .services-note {
+    inset-block-end: 3px;
+    font-size: 7px;
+  }
   .mobile-bottom-nav {
     position: fixed;
     z-index: 30;
@@ -1849,5 +1939,11 @@ section[id] {
   }
   .business-copy h2 {
     font-size: 17px;
+  }
+  .service-item h3 {
+    font-size: 8px;
+  }
+  .service-item p {
+    font-size: 6px;
   }
 }
