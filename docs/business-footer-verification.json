@@ -1,0 +1,388 @@
+{
+  "results": [
+    {
+      "viewport": 1908,
+      "scrollWidth": 1908,
+      "overflow": false,
+      "paginationNodes": 0,
+      "businessBanner": {
+        "width": 1908,
+        "height": 500,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "businessTitle": {
+        "width": 675.078125,
+        "height": 149.375,
+        "fontSize": "51.516px",
+        "lineHeight": "74.6982px",
+        "padding": "0px"
+      },
+      "businessBody": {
+        "width": 675.078125,
+        "height": 72.1875,
+        "fontSize": "19px",
+        "lineHeight": "36.1px",
+        "padding": "0px"
+      },
+      "businessButton": {
+        "width": 233.953125,
+        "height": 48,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "10px 24px"
+      },
+      "serviceHighlights": {
+        "width": 1908,
+        "height": 205,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 47.7px 46px"
+      },
+      "serviceTitle": {
+        "width": 412.15625,
+        "height": 34.1875,
+        "fontSize": "19px",
+        "lineHeight": "34.2px",
+        "padding": "0px"
+      },
+      "footer": {
+        "width": 1908,
+        "height": 154,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 47.7px"
+      },
+      "footerLogo": {
+        "width": 148.15625,
+        "height": 46,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "footerTagline": {
+        "width": 240.25,
+        "height": 27,
+        "fontSize": "15px",
+        "lineHeight": "27px",
+        "padding": "0px"
+      },
+      "footerNote": {
+        "width": 235.125,
+        "height": 25.1875,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "brokenImages": [],
+      "favoriteBefore": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      },
+      "favoriteSelected": {
+        "pressed": "true",
+        "color": "rgb(220, 38, 38)",
+        "fill": "rgb(220, 38, 38)",
+        "stroke": "rgb(220, 38, 38)"
+      },
+      "favoriteUnselected": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      }
+    },
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "paginationNodes": 0,
+      "businessBanner": {
+        "width": 1440,
+        "height": 403.90625,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "businessTitle": {
+        "width": 669.609375,
+        "height": 112.71875,
+        "fontSize": "38.88px",
+        "lineHeight": "56.376px",
+        "padding": "0px"
+      },
+      "businessBody": {
+        "width": 669.609375,
+        "height": 57,
+        "fontSize": "15px",
+        "lineHeight": "28.5px",
+        "padding": "0px"
+      },
+      "businessButton": {
+        "width": 233.953125,
+        "height": 48,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "10px 24px"
+      },
+      "serviceHighlights": {
+        "width": 1440,
+        "height": 205,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 36px 46px"
+      },
+      "serviceTitle": {
+        "width": 301,
+        "height": 27,
+        "fontSize": "15px",
+        "lineHeight": "27px",
+        "padding": "0px"
+      },
+      "footer": {
+        "width": 1440,
+        "height": 154,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 36px"
+      },
+      "footerLogo": {
+        "width": 148.15625,
+        "height": 46,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "footerTagline": {
+        "width": 240.25,
+        "height": 27,
+        "fontSize": "15px",
+        "lineHeight": "27px",
+        "padding": "0px"
+      },
+      "footerNote": {
+        "width": 235.125,
+        "height": 25.1875,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "brokenImages": [],
+      "favoriteBefore": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      },
+      "favoriteSelected": {
+        "pressed": "true",
+        "color": "rgb(220, 38, 38)",
+        "fill": "rgb(220, 38, 38)",
+        "stroke": "rgb(220, 38, 38)"
+      },
+      "favoriteUnselected": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      }
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "overflow": false,
+      "paginationNodes": 0,
+      "businessBanner": {
+        "width": 1024,
+        "height": 389.78125,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "businessTitle": {
+        "width": 474.875,
+        "height": 98.59375,
+        "fontSize": "34px",
+        "lineHeight": "49.3px",
+        "padding": "0px"
+      },
+      "businessBody": {
+        "width": 474.875,
+        "height": 57,
+        "fontSize": "15px",
+        "lineHeight": "28.5px",
+        "padding": "0px"
+      },
+      "businessButton": {
+        "width": 233.953125,
+        "height": 48,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "10px 24px"
+      },
+      "serviceHighlights": {
+        "width": 1024,
+        "height": 205,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 25.6px 46px"
+      },
+      "serviceTitle": {
+        "width": 202.203125,
+        "height": 27,
+        "fontSize": "15px",
+        "lineHeight": "27px",
+        "padding": "0px"
+      },
+      "footer": {
+        "width": 1024,
+        "height": 154,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "32px 25.6px"
+      },
+      "footerLogo": {
+        "width": 148.15625,
+        "height": 46,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "footerTagline": {
+        "width": 240.25,
+        "height": 27,
+        "fontSize": "15px",
+        "lineHeight": "27px",
+        "padding": "0px"
+      },
+      "footerNote": {
+        "width": 235.125,
+        "height": 25.1875,
+        "fontSize": "14px",
+        "lineHeight": "25.2px",
+        "padding": "0px"
+      },
+      "brokenImages": [],
+      "favoriteBefore": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      },
+      "favoriteSelected": {
+        "pressed": "true",
+        "color": "rgb(220, 38, 38)",
+        "fill": "rgb(220, 38, 38)",
+        "stroke": "rgb(220, 38, 38)"
+      },
+      "favoriteUnselected": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      }
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "overflow": false,
+      "paginationNodes": 0,
+      "businessBanner": {
+        "width": 358,
+        "height": 178,
+        "fontSize": "13px",
+        "lineHeight": "23.4px",
+        "padding": "0px"
+      },
+      "businessTitle": {
+        "width": 243,
+        "height": 32.390625,
+        "fontSize": "18px",
+        "lineHeight": "32.4px",
+        "padding": "0px"
+      },
+      "businessBody": {
+        "width": 243,
+        "height": 36,
+        "fontSize": "10px",
+        "lineHeight": "18px",
+        "padding": "0px"
+      },
+      "businessButton": {
+        "width": 140.90625,
+        "height": 29,
+        "fontSize": "9px",
+        "lineHeight": "16.2px",
+        "padding": "3px 11px"
+      },
+      "serviceHighlights": {
+        "width": 358,
+        "height": 131,
+        "fontSize": "13px",
+        "lineHeight": "23.4px",
+        "padding": "0px"
+      },
+      "serviceTitle": {
+        "width": 82.5,
+        "height": 16.1875,
+        "fontSize": "9px",
+        "lineHeight": "16.2px",
+        "padding": "0px"
+      },
+      "footer": {
+        "width": 358,
+        "height": 72,
+        "fontSize": "13px",
+        "lineHeight": "23.4px",
+        "padding": "13px 0px 18px"
+      },
+      "footerLogo": {
+        "width": 79.25,
+        "height": 24,
+        "fontSize": "13px",
+        "lineHeight": "23.4px",
+        "padding": "0px"
+      },
+      "footerTagline": {
+        "width": 0,
+        "height": 0,
+        "fontSize": "10px",
+        "lineHeight": "18px",
+        "padding": "0px"
+      },
+      "footerNote": {
+        "width": 138.640625,
+        "height": 14.390625,
+        "fontSize": "8px",
+        "lineHeight": "14.4px",
+        "padding": "0px"
+      },
+      "brokenImages": [],
+      "favoriteBefore": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      },
+      "favoriteSelected": {
+        "pressed": "true",
+        "color": "rgb(220, 38, 38)",
+        "fill": "rgb(220, 38, 38)",
+        "stroke": "rgb(220, 38, 38)"
+      },
+      "favoriteUnselected": {
+        "pressed": "false",
+        "color": "rgb(36, 39, 41)",
+        "fill": "none",
+        "stroke": "rgb(36, 39, 41)"
+      }
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "hydrationWarnings": [],
+  "failedRequests": []
+}
