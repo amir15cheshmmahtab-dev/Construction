@@ -36,11 +36,13 @@ onBeforeUnmount(() => observer?.disconnect())
     ><a
       href="#projects"
       :class="{ active: activeSection === 'projects' }"
+      :aria-current="activeSection === 'projects' ? 'location' : undefined"
       @click="activeSection = 'projects'"
       ><ClipboardList :size="22" :stroke-width="1.5" /><span>پروژه‌ها</span></a
     ><a
       href="#categories"
       :class="{ active: activeSection === 'categories' }"
+      :aria-current="activeSection === 'categories' ? 'location' : undefined"
       @click="activeSection = 'categories'"
       ><LayoutGrid :size="22" :stroke-width="1.5" /><span>دسته‌بندی‌ها</span></a
     >
