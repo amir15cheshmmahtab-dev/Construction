@@ -1,0 +1,8 @@
+node_modules
+.nuxt
+.output
+.cache
+coverage
+package-lock.json
+public/fonts
+public/images
