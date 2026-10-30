@@ -640,21 +640,21 @@ section[id] {
   border-radius: 6px;
   text-align: right;
   direction: rtl;
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease;
 }
 .category-image {
   overflow: hidden;
-  border-radius: 6px 6px 0 0;
   aspect-ratio: 1.72;
   background: #e6e0d7;
+  border-radius: 5px 5px 0 0;
 }
 .category-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 450ms ease;
-}
-.category-card:hover .category-image img {
-  transform: scale(1.045);
 }
 .category-label {
   display: flex;
@@ -664,13 +664,21 @@ section[id] {
   padding: 10px 9px 0 2px;
   font-size: 11px;
   line-height: 1.8;
+  color: #3e3b36;
+  font-weight: 500;
+  min-height: 44px;
 }
 .category-label > svg {
   width: 19px;
   height: 19px;
   padding: 3px;
-  border: 1px solid #625e59;
   border-radius: 50%;
+  color: #76634e;
+  border: 1px solid #9c8a7280;
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
 }
 .collections-surface {
   background: #fbfaf7;
@@ -696,8 +704,8 @@ section[id] {
   color: var(--color-ink);
   font-size: 27px;
   line-height: 1.6;
-  font-weight: 600;
-  letter-spacing: -1px;
+  font-weight: 550;
+  letter-spacing: -0.7px;
 }
 .heading-rule {
   display: block;
@@ -709,8 +717,8 @@ section[id] {
 }
 .section-description {
   font-size: 12px;
-  line-height: 1.9;
   color: var(--text-secondary);
+  line-height: 2;
 }
 .section-heading .base-button {
   margin-block-start: 18px;
@@ -727,11 +735,11 @@ section[id] {
   min-width: 0;
   height: clamp(220px, 18.5vw, 275px);
   overflow: hidden;
-  border-radius: 6px;
   background: #72685a;
   text-align: start;
   direction: rtl;
   padding: 0;
+  border-radius: 5px;
 }
 .project-card > img {
   width: 100%;
@@ -739,13 +747,10 @@ section[id] {
   object-fit: cover;
   transition: transform 550ms ease;
 }
-.project-card:hover > img {
-  transform: scale(1.045);
-}
 .project-card-shade {
   position: absolute;
-  inset: 25% 0 0;
-  background: linear-gradient(0deg, #101211e6, transparent 90%);
+  inset: 35% 0 0;
+  background: linear-gradient(0deg, #111512ed 0%, #11151259 46%, transparent 100%);
 }
 .project-card-label {
   position: absolute;
@@ -756,8 +761,8 @@ section[id] {
   gap: 9px;
   color: #fff;
   font-size: 12px;
-  font-weight: 500;
   line-height: 1.8;
+  font-weight: 500;
 }
 .project-card-label > span {
   max-width: 110px;
@@ -765,16 +770,15 @@ section[id] {
 .project-card-label > i {
   display: grid;
   place-items: center;
-  border: 1px solid #fffc;
   width: 29px;
   height: 29px;
   flex-shrink: 0;
   border-radius: 50%;
   font-style: normal;
   transition: background 180ms;
-}
-.project-card:hover i {
-  background: var(--color-bronze);
+  background: #fffdf608;
+  backdrop-filter: blur(5px);
+  border: 1px solid #fffaf3a6;
 }
 .mobile-section-link {
   display: none;
@@ -1148,6 +1152,12 @@ section[id] {
   padding-inline-end: 44px;
 }
 
+.category-card:focus-visible,
+.project-card:focus-visible {
+  outline-offset: -3px;
+  outline-color: #c29a70;
+}
+
 @media (min-width: 1600px) {
   .hero-copy {
     width: 490px;
@@ -1223,20 +1233,6 @@ section[id] {
   .header-divider--last {
     display: none;
   }
-  .editorial-section {
-    grid-template-columns: 175px minmax(0, 1fr);
-    column-gap: 23px;
-  }
-  .section-heading h2 {
-    font-size: 24px;
-  }
-  .category-grid {
-    gap: 9px;
-  }
-  .category-label {
-    font-size: 10px;
-    padding-inline-start: 3px;
-  }
   .hero-copy {
     max-width: 48%;
   }
@@ -1256,10 +1252,6 @@ section[id] {
     font-size: 10px;
   }
   .product-price {
-    font-size: 11px;
-  }
-  .project-card-label {
-    inset-inline: 10px;
     font-size: 11px;
   }
   .business-copy h2 {
@@ -1284,7 +1276,7 @@ section[id] {
     padding-inline: clamp(24px, 2.5vw, 48px);
   }
   .categories-section {
-    padding-block: 32px 28px;
+    padding-block: 34px 30px;
   }
   .category-grid {
     gap: clamp(12px, 1vw, 20px);
@@ -1293,9 +1285,9 @@ section[id] {
     aspect-ratio: 1.45;
   }
   .category-label {
-    padding: 14px 10px 0 3px;
     gap: 8px;
-    font-size: clamp(12px, 0.9vw, 17px);
+    font-size: clamp(12px, 0.9vw, 16px);
+    padding: 14px 8px 0 3px;
   }
   .category-label > svg {
     width: 25px;
@@ -1304,7 +1296,7 @@ section[id] {
     flex-shrink: 0;
   }
   .collections-surface {
-    padding-block: 40px 30px;
+    padding-block: 48px 42px;
   }
   .editorial-section {
     grid-template-columns: clamp(220px, 16vw, 300px) minmax(0, 1fr);
@@ -1316,11 +1308,12 @@ section[id] {
   }
   .section-heading h2,
   .products-section .section-heading h2 {
-    font-size: clamp(28px, 2.15vw, 40px);
+    font-size: clamp(28px, 2.1vw, 40px);
+    line-height: 1.7;
   }
   .section-description {
-    font-size: clamp(14px, 0.95vw, 18px);
     line-height: 2;
+    font-size: clamp(14px, 0.95vw, 17px);
   }
   .heading-rule {
     width: 28px;
@@ -1337,12 +1330,12 @@ section[id] {
     gap: clamp(12px, 1vw, 20px);
   }
   .project-card {
-    height: clamp(280px, 23vw, 420px);
+    height: clamp(300px, 23.5vw, 420px);
   }
   .project-card-label {
-    inset: auto 16px 22px;
-    font-size: clamp(14px, 1vw, 19px);
     gap: 12px;
+    inset: auto 18px 24px;
+    font-size: clamp(14px, 1vw, 18px);
   }
   .project-card-label > span {
     max-width: 170px;
@@ -1588,46 +1581,48 @@ section[id] {
     scroll-snap-align: start;
   }
   .category-label {
-    font-size: 10px;
+    font-size: 11px;
   }
   .collections-surface {
     padding-block-start: 26px;
   }
   .editorial-section {
-    grid-template-columns: 150px minmax(0, 1fr);
-    column-gap: 22px;
+    grid-template-columns: 170px minmax(0, 1fr);
+    column-gap: 24px;
   }
   .section-heading h2 {
     font-size: 23px;
   }
   .section-heading .eyebrow {
-    font-size: 8px;
     letter-spacing: 1.5px;
+    font-size: 10px;
   }
   .section-description {
-    font-size: 11px;
+    font-size: 12px;
   }
   .section-heading .base-button {
     padding-inline: 13px;
-    font-size: 10px;
     gap: 12px;
+    min-height: 44px;
+    font-size: 11px;
   }
   .project-track {
     overflow-x: auto;
-    grid-template-columns: repeat(4, minmax(145px, 1fr));
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+    grid-template-columns: repeat(4, minmax(170px, 1fr));
+    gap: 12px;
   }
   .project-track::-webkit-scrollbar {
     display: none;
   }
   .project-card {
-    height: 224px;
     scroll-snap-align: start;
+    height: 248px;
   }
   .project-card-label {
     inset-inline: 10px;
-    font-size: 11px;
+    font-size: 12px;
   }
   .product-grid {
     grid-template-columns: repeat(5, minmax(136px, 1fr));
@@ -1817,52 +1812,52 @@ section[id] {
     width: 11px;
   }
   .categories-section {
-    padding-block: 18px 15px;
     border-radius: 0;
     background: var(--color-ivory);
     border: 0;
+    padding-block: 22px 24px;
   }
   .category-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 9px;
     overflow: visible;
     padding-block-end: 0;
+    gap: 10px 8px;
   }
   .category-card {
     grid-column: span 3;
-    background: #fffaf4a6;
-    border: 1px solid #e8e3d866;
+    background: #fdfbf7;
+    border: 1px solid #e2dbcf80;
     border-radius: 5px;
   }
   .category-card:nth-child(n + 5) {
     grid-column: span 4;
   }
   .category-image {
-    aspect-ratio: 1.28;
     border-radius: 4px 4px 0 0;
+    aspect-ratio: 1.22;
   }
   .category-card:nth-child(n + 5) .category-image {
     aspect-ratio: 1.9;
   }
   .category-label {
-    padding: 6px 5px;
-    font-size: 9px;
-    min-height: 32px;
-    line-height: 1.6;
+    font-size: 10.5px;
+    min-height: 46px;
+    padding: 7px 5px;
+    line-height: 1.65;
   }
   .category-label > span {
     letter-spacing: -0.2px;
   }
   .category-label > svg {
-    width: 16px;
-    height: 16px;
     flex-shrink: 0;
     padding: 2px;
+    width: 17px;
+    height: 17px;
   }
   .collections-surface {
-    padding-block: 14px 16px;
-    border-start-end-radius: 24px;
     background: #fcfbf8;
+    padding-block: 24px 30px;
+    border-start-end-radius: 24px;
   }
   .editorial-section {
     position: relative;
@@ -1871,13 +1866,14 @@ section[id] {
   }
   .section-heading {
     padding: 0;
-    margin-block-end: 14px;
+    margin-block-end: 18px;
+    padding-inline-end: 88px;
   }
   .section-heading h2 {
-    font-size: 22px;
     line-height: 1.7;
-    font-weight: 600;
     letter-spacing: -0.7px;
+    font-size: 22px;
+    font-weight: 550;
   }
   .section-heading .eyebrow,
   .heading-rule,
@@ -1885,46 +1881,48 @@ section[id] {
     display: none;
   }
   .section-description {
-    font-size: 10px;
-    line-height: 1.9;
-    margin-block-start: 1px;
+    font-size: 11px;
+    line-height: 2;
+    margin-block-start: 6px;
   }
   .mobile-section-link {
     position: absolute;
-    inset-block-start: 11px;
     inset-inline-end: 0;
     display: flex;
     align-items: center;
-    gap: 8px;
     color: #8f6842;
-    font-size: 9px;
-    padding: 0;
+    inset-block-start: -3px;
+    min-height: 44px;
+    font-size: 11px;
+    gap: 6px;
+    padding: 4px 0;
   }
   .project-track {
     display: flex;
-    gap: 8px;
     margin-inline-end: calc(var(--page-gutter) * -1);
     padding-inline-end: var(--page-gutter);
     direction: ltr;
-    scroll-padding-inline: 0;
+    gap: 10px;
+    padding-block: 2px;
+    scroll-padding-inline: 2px;
   }
   .project-card {
-    flex: 0 0 calc((100vw - 48px) / 2.45);
-    height: 175px;
     border-radius: 5px;
+    flex: 0 0 calc((100vw - 48px) / 2.2);
+    height: 200px;
   }
   .project-card-label {
-    inset-inline: 9px;
-    inset-block-end: 12px;
-    gap: 4px;
-    font-size: 10px;
+    font-size: 12px;
+    inset-inline: 10px;
+    inset-block-end: 14px;
+    gap: 6px;
   }
   .project-card-label > span {
-    max-width: 87px;
+    max-width: calc(100% - 30px);
   }
   .project-card-label > i {
-    width: 23px;
-    height: 23px;
+    width: 25px;
+    height: 25px;
   }
   .project-card-label > i svg {
     width: 16px;
@@ -2188,10 +2186,6 @@ section[id] {
     font-size: 11px;
     padding-inline: 9px;
   }
-  .project-card {
-    flex-basis: calc((100vw - 64px) / 3);
-    height: 200px;
-  }
   .product-card {
     grid-template-columns: 1fr 1fr;
     column-gap: 6px;
@@ -2213,6 +2207,10 @@ section[id] {
   .add-to-cart {
     grid-column: 1/-1;
     margin-block-start: 5px;
+  }
+  .project-card {
+    flex-basis: calc((100vw - 64px) / 3);
+    height: 220px;
   }
   .business-copy {
     max-width: none;
@@ -2244,10 +2242,6 @@ section[id] {
   .hero-copy h1 {
     font-size: 25px;
   }
-  .category-label {
-    font-size: 8px;
-    padding-inline: 4px;
-  }
   .category-label > svg {
     width: 14px;
     height: 14px;
@@ -2255,16 +2249,6 @@ section[id] {
   .section-heading h2,
   .products-section .section-heading h2 {
     font-size: 20px;
-  }
-  .mobile-section-link {
-    font-size: 8px;
-  }
-  .project-card {
-    height: 160px;
-  }
-  .project-card-label {
-    font-size: 9px;
-    inset-inline: 6px;
   }
   .product-card {
     padding-inline: 7px;
@@ -2287,6 +2271,10 @@ section[id] {
   .service-item p {
     font-size: 6px;
   }
+  .category-label {
+    font-size: 9.5px;
+    padding-inline: 4px;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2295,5 +2283,19 @@ section[id] {
     box-shadow:
       0 4px 10px #1414140c,
       inset 0 1px 0 #ffffff1a;
+  }
+  .category-card:hover .category-image img {
+    transform: scale(1.045);
+  }
+  .project-card:hover > img {
+    transform: scale(1.045);
+  }
+  .project-card:hover i {
+    background: var(--color-bronze);
+  }
+  .category-card:hover .category-label > svg {
+    background: #8f6842;
+    border-color: #8f6842;
+    color: #fff;
   }
 }
