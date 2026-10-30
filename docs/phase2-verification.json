@@ -1,0 +1,175 @@
+{
+  "phase": "2 — premium visual refinement",
+  "date": "2026-10-30",
+  "timezone": "Asia/Tehran",
+  "runtime": "Node 24.14.0 / Nuxt 4.5.2",
+  "environment": "Production Nitro build at http://localhost:3002/",
+  "browser": "Codex in-app browser",
+  "checks": {
+    "typecheck": "passed",
+    "eslint": "passed",
+    "prettier": "passed",
+    "productionBuild": "passed",
+    "browserConsoleErrors": [],
+    "browserConsoleWarnings": [],
+    "allCurrentImagesLoaded": true
+  },
+  "responsive": [
+    {
+      "business": {
+        "copyBelowPhoto": true,
+        "textAlign": "left"
+      },
+      "client": 305,
+      "clippedText": [],
+      "controls": {
+        "account": 44,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 69.22,
+      "noOverflow": true,
+      "scrollWidth": 305,
+      "width": 320
+    },
+    {
+      "business": {
+        "copyBelowPhoto": true,
+        "textAlign": "left"
+      },
+      "client": 375,
+      "clippedText": [],
+      "controls": {
+        "account": 44,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 60.38,
+      "noOverflow": true,
+      "scrollWidth": 375,
+      "width": 390
+    },
+    {
+      "business": {
+        "copyBelowPhoto": true,
+        "textAlign": "left"
+      },
+      "client": 415,
+      "clippedText": [],
+      "controls": {
+        "account": 44,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 50.97,
+      "noOverflow": true,
+      "scrollWidth": 415,
+      "width": 430
+    },
+    {
+      "business": {
+        "copyBelowPhoto": true,
+        "textAlign": "left"
+      },
+      "client": 753,
+      "clippedText": [],
+      "controls": {
+        "account": 44,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 17.25,
+      "noOverflow": true,
+      "scrollWidth": 753,
+      "width": 768
+    },
+    {
+      "business": {
+        "copyBelowPhoto": false,
+        "textAlign": "left"
+      },
+      "client": 1009,
+      "clippedText": [],
+      "controls": {
+        "account": 83.375,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 15.63,
+      "noOverflow": true,
+      "scrollWidth": 1009,
+      "width": 1024
+    },
+    {
+      "business": {
+        "copyBelowPhoto": false,
+        "textAlign": "left"
+      },
+      "client": 1425,
+      "clippedText": [],
+      "controls": {
+        "account": 97.640625,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 11.05,
+      "noOverflow": true,
+      "scrollWidth": 1425,
+      "width": 1440
+    },
+    {
+      "business": {
+        "copyBelowPhoto": false,
+        "textAlign": "left"
+      },
+      "client": 1893,
+      "clippedText": [],
+      "controls": {
+        "account": 97.640625,
+        "cart": 44,
+        "favorite": 44,
+        "search": 46
+      },
+      "heroGap": 14.25,
+      "noOverflow": true,
+      "scrollWidth": 1893,
+      "width": 1908
+    }
+  ],
+  "interactions": {
+    "favorite": "aria-pressed=true, red rgb(220,38,38) stroke and fill, 44x44px target",
+    "productExpansion": "5 visible products after expand; collapse restored",
+    "cart": "existing honest placeholder notice displayed",
+    "mobileMenu": "opened, Escape closed, focus returned to menu button",
+    "location": "native dialog opened, Tehran selection closed dialog",
+    "search": "Persian suggestion, no-result state, clear and empty-submit feedback verified",
+    "supplierAction": "existing supplier-specific notice displayed",
+    "wholesaleAction": "existing buyer-specific notice displayed"
+  },
+  "preserved": [
+    "section order and content",
+    "product names, specifications, prices and ordering",
+    "navigation and existing local interactions",
+    "left-aligned desktop B2B content and two CTA paths",
+    "full-width desktop showcases, business banner and footer",
+    "Nuxt/Vue/TypeScript/Tailwind/Pinia/TanStack architecture"
+  ],
+  "visualReview": {
+    "widths": [1440, 390, 430, 768],
+    "method": "Sequential production-browser viewport screenshots stitched at measured scroll positions; fixed mobile navigation appears in the final viewport only. Browser-capture scaling was normalized to requested viewport dimensions. No website artwork was composited into these screenshots.",
+    "files": [
+      "docs/previews/phase2-home-1440.webp",
+      "docs/previews/phase2-home-390.webp",
+      "docs/previews/phase2-home-430.webp",
+      "docs/previews/phase2-home-768.webp"
+    ]
+  },
+  "reducedMotion": "Existing global reduced-motion rule retained; decorative transforms are explicitly disabled under prefers-reduced-motion. Fine-pointer hover effects are gated by hover/pointer media queries; media rules reviewed in source.",
+  "scope": "Frontend visual refinement only; no new dependencies, pages, backend or business logic."
+}
