@@ -22,12 +22,12 @@ interface BusinessPromotion {
 export const businessPromotion: BusinessPromotion = {
   // Public assets are runtime URLs, not imports for Vite's asset pipeline.
   image: {
-    src: '/images/business/partnership.webp',
+    src: '/images/business/showroom-consultation.webp',
     srcset:
-      '/images/business/partnership-640.webp 640w, /images/business/partnership-960.webp 960w, /images/business/partnership.webp 1920w',
-    alt: 'همکاری نمایندگان تأمین‌کننده مصالح و شرکت ساختمانی در جلسه بررسی نمونه‌های مصالح و نقشه پروژه',
+      '/images/business/showroom-consultation-640.webp 640w, /images/business/showroom-consultation-960.webp 960w, /images/business/showroom-consultation.webp 1920w',
+    alt: 'معمار و متخصصان ساخت‌وساز در شوروم مصالح، در حال بررسی نمونه‌های سنگ، سرامیک و فلز روی نقشه‌های پروژه',
     width: 1920,
-    height: 686,
+    height: 685,
   },
   eyebrow: 'BUSINESS PARTNERSHIPS',
   headline: ['از فروش محصولات شما', 'تا تأمین پروژه‌های بزرگ'],

@@ -985,28 +985,28 @@ section[id] {
 .business-banner {
   position: relative;
   min-height: 222px;
-  background: #161a1a;
   color: #fff;
   overflow: hidden;
+  background: #171c1b;
 }
 .business-banner > img {
   position: absolute;
   height: 100%;
   width: 100%;
   object-fit: cover;
-  object-position: right 25%;
+  object-position: right top;
 }
 .business-shade {
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, #111616fa 0%, #111616f0 38%, #11161645 62%, transparent 100%);
+  background: linear-gradient(90deg, #141b19fa 0%, #141b19f2 32%, #141b198c 50%, transparent 70%);
 }
 .business-copy {
   position: relative;
   padding: 23px 22px 20px max(calc((100vw - 1280px) / 2), var(--page-gutter));
   direction: rtl;
-  text-align: left;
   max-width: 440px;
+  text-align: left;
 }
 .business-copy .eyebrow {
   color: #d4b18a;
@@ -1016,18 +1016,22 @@ section[id] {
 }
 .business-copy h2 {
   font-size: 23px;
-  font-weight: 500;
   letter-spacing: -0.6px;
   white-space: normal;
+  line-height: 1.65;
+  font-weight: 550;
 }
 .business-copy h2 span {
   color: #d6af80;
 }
 .business-copy > p:not(.eyebrow) {
   font-size: 11px;
-  line-height: 1.8;
   margin-block-start: 5px;
-  color: #e2e0db;
+  max-width: 48ch;
+  margin-inline-start: auto;
+  margin-inline-end: 0;
+  line-height: 2;
+  color: #e2e1db;
 }
 .business-actions {
   display: flex;
@@ -1035,22 +1039,24 @@ section[id] {
   align-items: center;
   justify-content: flex-start;
   direction: ltr;
-  gap: 12px;
   margin-block-start: 18px;
+  gap: 12px;
 }
 .business-actions .base-button {
   direction: rtl;
   margin: 0;
-  min-height: 32px;
   padding: 4px 15px;
   font-size: 10px;
   gap: 16px;
+  min-height: 48px;
+  border-radius: 4px;
+  font-weight: 500;
 }
 .business-note {
   display: block;
-  color: #d3b897;
   font-size: 8px;
   margin-block-start: 5px;
+  color: #c6b59f;
 }
 .service-highlights {
   position: relative;
@@ -1272,9 +1278,6 @@ section[id] {
   .hero-search {
     width: 480px;
   }
-  .business-copy h2 {
-    font-size: 21px;
-  }
   .service-highlights {
     padding-inline: 12px 24px;
   }
@@ -1413,54 +1416,54 @@ section[id] {
   .business-banner {
     display: flex;
     align-items: center;
-    min-height: clamp(380px, 27vw, 500px);
+    min-height: clamp(430px, 31vw, 560px);
   }
   .business-shade {
-    background: linear-gradient(90deg, #11161699 0%, #11161666 32%, #1116161a 48%, transparent 62%);
+    background: linear-gradient(90deg, #141b19fa 0%, #141b19f0 31%, #141b198c 45%, transparent 65%);
   }
   .business-copy {
-    width: 50%;
+    width: 49%;
     max-width: 760px;
-    padding: 40px clamp(32px, 3vw, 60px) 40px clamp(24px, 2.5vw, 48px);
+    padding: 44px clamp(32px, 3vw, 60px) 44px clamp(24px, 2.5vw, 48px);
   }
   .business-copy .eyebrow {
     display: flex;
     align-items: center;
     gap: 20px;
-    font-size: 12px;
-    letter-spacing: 2.5px;
-    margin-block-end: 16px;
+    font-size: 11px;
+    letter-spacing: 2.3px;
+    margin-block-end: 18px;
   }
   .business-copy .eyebrow::after {
     content: '';
-    width: 72px;
     height: 1px;
-    background: #c29a7080;
+    width: 48px;
+    background: #c29a7066;
   }
   .business-copy h2 {
-    font-size: clamp(32px, 2.4vw, 46px);
-    line-height: 1.45;
     white-space: normal;
     font-weight: 550;
+    font-size: clamp(30px, 2.3vw, 44px);
+    line-height: 1.65;
   }
   .business-copy > p:not(.eyebrow) {
-    margin-block-start: 16px;
-    font-size: clamp(15px, 1vw, 19px);
-    line-height: 1.9;
+    font-size: clamp(14px, 1vw, 18px);
+    line-height: 2;
+    margin-block-start: 18px;
   }
   .business-actions {
-    margin-block-start: 24px;
+    margin-block-start: 28px;
   }
   .business-actions .base-button {
-    min-height: 48px;
-    padding: 10px 18px;
     margin-block-start: 0;
-    font-size: 14px;
+    min-height: 48px;
+    font-size: 13px;
+    padding: 10px 18px;
     gap: 12px;
   }
   .business-note {
-    margin-block-start: 10px;
     font-size: 11px;
+    margin-block-start: 14px;
   }
   .service-highlights {
     min-height: 205px;
@@ -1645,12 +1648,15 @@ section[id] {
     grid-template-columns: 1fr;
   }
   .business-banner {
-    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
   .business-copy {
-    width: 55%;
-    max-width: 600px;
-    padding: 32px var(--page-gutter);
+    width: 100%;
+    max-width: none;
+    padding: 28px var(--page-gutter) 34px;
+    background: #171c1b;
   }
   .business-copy h2 {
     font-size: 28px;
@@ -1658,19 +1664,27 @@ section[id] {
   .business-copy > p:not(.eyebrow) {
     font-size: 13px;
     margin-block-start: 12px;
+    line-height: 2;
   }
   .business-actions .base-button {
-    min-height: 40px;
     padding: 8px 16px;
     font-size: 12px;
     gap: 10px;
+    min-height: 44px;
   }
   .business-note {
     font-size: 10px;
     margin-block-start: 10px;
   }
   .business-banner > img {
+    position: relative;
+    height: 280px;
     object-position: right 40%;
+  }
+  .business-shade {
+    inset: 0 0 auto;
+    height: 281px;
+    background: linear-gradient(0deg, #171c1b 0%, #171c1b00 40%);
   }
   .service-highlights {
     min-height: 155px;
@@ -2014,49 +2028,50 @@ section[id] {
   .business-copy {
     width: 100%;
     max-width: none;
-    padding: 12px 18px 22px;
-    background: #111616;
+    padding: 22px 22px 28px;
+    background: #171c1b;
   }
   .business-copy .eyebrow {
-    font-size: 9px;
     letter-spacing: 1.5px;
-    margin-block-end: 10px;
+    font-size: 10px;
+    margin-block-end: 12px;
   }
   .business-copy h2 {
-    font-size: 23px;
-    line-height: 1.6;
     letter-spacing: -0.5px;
+    font-size: 25px;
+    line-height: 1.65;
   }
   .business-copy > p:not(.eyebrow) {
-    font-size: 12px;
-    line-height: 1.9;
-    margin-block-start: 12px;
+    font-size: 13px;
+    line-height: 2;
+    margin-block-start: 14px;
   }
   .business-actions {
-    gap: 9px;
-    margin-block-start: 18px;
+    gap: 10px;
+    margin-block-start: 22px;
   }
   .business-actions .base-button {
     width: 100%;
-    font-size: 12px;
-    min-height: 40px;
-    padding: 7px 14px;
     gap: 12px;
     margin: 0;
+    font-size: 13px;
+    min-height: 48px;
+    padding: 10px 16px;
   }
   .business-note {
-    font-size: 9px;
-    margin-block-start: 12px;
+    font-size: 10px;
+    line-height: 1.9;
+    margin-block-start: 14px;
   }
   .business-banner > img {
     position: relative;
-    height: 180px;
     object-position: right 40%;
+    height: 210px;
   }
   .business-shade {
     inset: 0 0 auto;
-    height: 181px;
-    background: linear-gradient(0deg, #111616 0%, #11161600 48%);
+    height: 211px;
+    background: linear-gradient(0deg, #171c1b 0%, #171c1b00 44%);
   }
   .service-highlights {
     min-height: 131px;
@@ -2211,9 +2226,6 @@ section[id] {
   .section-heading h2,
   .products-section .section-heading h2 {
     font-size: 20px;
-  }
-  .business-copy h2 {
-    font-size: 21px;
   }
   .service-item h3 {
     font-size: 8px;
