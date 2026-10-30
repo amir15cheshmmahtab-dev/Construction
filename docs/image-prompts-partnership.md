@@ -31,3 +31,46 @@ On the table in the right region are neatly arranged cream travertine and cerami
 Lighting/mood: soft warm natural window light and gentle architectural lighting, realistic skin tones, tactile stone, steel, walnut and cloth, restrained luxury editorial architectural photography, consistent warm bronze, charcoal and ivory grading, high photographic realism. Believable hands and fingers with correct anatomy, natural handshake contact, distinct realistic faces.
 Constraints: one single full photograph, no montage or collage, no website interface, no text, no readable markings, no letters or numbers, no logos, no fake brands, no watermark. No people on left 40 percent. Avoid exaggerated smiles, corporate stock-photo posing, overprocessed plastic skin, deformed hands, doubled fingers, truncated heads, additional limbs, busy left background.
 ```
+
+## Phase 2 — architectural showroom consultation
+
+The active homepage banner now uses a dedicated original material-selection consultation photograph instead of the handshake scene documented above. The original `partnership*.webp` files remain available as previous assets.
+
+Generated on **2026-10-30** with the built-in `image_gen.imagegen` tool. One successful generation was used; no CLI/API fallback, stock photography, screenshots, logos, or person reference images were used.
+
+Source PNG: `/home/amir/.codex/generated_images/01a18d94-11e1-7992-8c3d-d1470e135255/exec-6d85a418-6748-4656-9e6c-456698bcc7e8.png`
+
+Original dimensions: **2098×749**. The generated source remains in its original location; the locally optimized WebP assets below are the production files.
+
+### Active delivered assets
+
+| Public path                                       | Dimensions | Bytes  |
+| ------------------------------------------------- | ---------- | ------ |
+| `/images/business/showroom-consultation.webp`     | 1920×685   | 160972 |
+| `/images/business/showroom-consultation-960.webp` | 960×343    | 51792  |
+| `/images/business/showroom-consultation-640.webp` | 640×228    | 25746  |
+
+Production variants use proportional Lanczos downscaling and WebP quality **88**, **85**, and **84**, respectively. No creative retouching or compositing was applied after generation.
+
+### Art direction and review
+
+A contact sheet of all **19 existing original photographs** was inspected before deciding to replace the B2B asset. The hero, categories, projects, and products already share warm stone, walnut, bronze and ivory materials with coherent photography and were retained. Only the handshake scene required new art direction.
+
+The accepted image shows three professionals comparing travertine and metal finishes while reviewing a ceramic sample and project drawings in a premium material showroom. The scene has realistic material textures and restrained expressions. The left charcoal wall supplies quiet space for live interface copy; people and material review occupy the right half. There is no handshake, legible embedded copy, branding, watermark, or website interface.
+
+Inspected the generated output and optimized default asset, plus simulated cover crops at desktop **1440×446** and **1920×560**, mobile **354×210** and **394×210**, and tablet **768×360**. All three faces and working hands remain visible. Desktop framing should use `object-position: right top` to preserve headroom at very wide widths. The existing mobile `right 40%` framing works with a 210px image stage. Browser verification of the integrated page is tracked separately by the main implementation.
+
+The image is illustrative generated imagery and does not identify actual platform partners. Existing Persian business messages and both CTA paths are preserved; only image metadata changed.
+
+### Exact Phase 2 prompt
+
+```text
+Use case: photorealistic-natural.
+Asset type: a single original premium architectural-materials B2B website banner photograph, ultra-wide landscape approximately 2.8:1 (at least 1920 pixels wide). This is a PHOTO ASSET only, no website interface.
+Scene/backdrop: A sophisticated contemporary architectural material showroom with tall travertine and charcoal stone display slabs, restrained walnut joinery and bronze detailing. Natural warm late-afternoon window light, tactile quiet architecture, editorial photography.
+Primary request: Three West Asian / Middle Eastern architecture and construction professionals in an authentic material-selection consultation, thoughtfully examining and discussing building-material samples over a large refined stone-and-walnut worktable. An architect points with a pencil to the edge of a cream ceramic sample resting on architectural drawings; a procurement colleague compares a small travertine sample held just above the table; the third professional studies a dark metal finish sample. Each action feels natural, focused and understated, no one looking at camera. Men and a woman in elegant professional neutral clothing, realistic faces and fabric, no formal sales pose, no handshaking.
+Table details: a considered selection of cream travertine, sand ceramic tile, brushed bronze and dark metal samples, fine paper architectural plans with indistinct linework, pencil. Material selection and project planning should clearly be the subject.
+Composition is important for an existing layout: LEFT 40 percent is calm naturally dark charcoal architectural wall and shadow, visually quiet, free of people and table clutter, useful negative space for future live text. People, all faces, hands, sample materials and working-table details occupy the RIGHT 60 percent, most tightly the right half. Medium-wide eye-level photographic framing, all three heads and hands visible with generous headroom; no head at upper edge. Keep faces between 25 and 60 percent of full frame height and working hands between 50 and 77 percent. The material table fills lower right with breathing room, not extreme foreground. The right half alone should remain a coherent consultation photograph in a mobile crop. Do not put a person on the far right edge.
+Photography: natural high-end architectural editorial photography, realistic skin pores and expressions, soft directional sunlight and gentle shadow, balanced warm ivory/charcoal/walnut/bronze palette, nuanced stone pores, restrained contrast, premium and believable rather than glossy.
+Constraints: one continuous photorealistic photograph; NO handshake, NO person looking at camera, NO corporate stock-photo posing, NO exaggerated smiles, NO helmets or safety vests, NO office boardroom, NO empty building exterior, NO embedded text, NO letters, NO numbers, NO logos, NO watermark, NO interface, NO collage. No deformed hands or repeated fingers. All heads and hands fully inside frame.
+```
