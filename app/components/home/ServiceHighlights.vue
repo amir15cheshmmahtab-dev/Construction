@@ -10,7 +10,7 @@ const icons = { Headset, Layers3, Truck, ScanLine }
   <div class="service-highlights">
     <div class="service-list">
       <div v-for="service in services" :key="service.id" class="service-item">
-        <component :is="icons[service.icon]" :size="27" :stroke-width="1.1" aria-hidden="true" />
+        <component :is="icons[service.icon]" :size="27" :stroke-width="1.4" aria-hidden="true" />
         <h3>{{ service.title }}</h3>
         <p>{{ service.description }}</p>
       </div>
