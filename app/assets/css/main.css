@@ -222,6 +222,82 @@ section[id] {
   font-weight: 500;
   text-align: left;
 }
+.location-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  white-space: nowrap;
+  padding: 7px 6px;
+  font-size: 12px;
+  color: var(--color-charcoal);
+}
+.location-button svg:first-child {
+  color: var(--color-bronze);
+}
+.location-button--dark {
+  color: var(--color-ivory);
+}
+.location-button--dark svg:first-child {
+  color: #e0cfb9;
+}
+.location-button--compact {
+  margin-inline-start: 8px;
+  padding-inline: 16px;
+  border-inline-start: 1px solid #d5cec2;
+}
+.location-dialog {
+  width: min(440px, calc(100vw - 36px));
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  color: var(--color-charcoal);
+  background: var(--color-ivory);
+  box-shadow: 0 20px 90px #0004;
+}
+.location-dialog::backdrop {
+  background: #14141490;
+  backdrop-filter: blur(3px);
+}
+.dialog-inner {
+  padding: 38px 30px 28px;
+  position: relative;
+}
+.dialog-close {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-end: 10px;
+}
+.dialog-symbol {
+  color: var(--accent);
+  margin-block-end: 18px;
+}
+.dialog-inner h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+.dialog-inner > p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-block-start: 9px;
+}
+.city-option {
+  margin-block: 25px 18px;
+  border: 1px solid var(--accent);
+  background: #a67c520b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 17px;
+  border-radius: 4px;
+}
+.city-option svg {
+  color: var(--accent);
+}
+.dialog-inner .dialog-note {
+  font-size: 11px;
+}
 .collections-surface {
   background: #fbfaf7;
   padding-block: 30px 19px;
@@ -344,6 +420,18 @@ section[id] {
     width: 31px;
     height: 36px;
   }
+  .location-button--compact {
+    padding-inline: 9px;
+    gap: 4px;
+    font-size: 10px;
+    margin-inline-start: 0;
+  }
+  .location-button--compact > svg:first-child {
+    width: 13px;
+  }
+  .location-button--compact > svg:last-child {
+    width: 11px;
+  }
   .collections-surface {
     padding-block: 14px 16px;
     border-start-end-radius: 24px;
@@ -391,6 +479,10 @@ section[id] {
   }
   .brand-mark {
     width: 27px;
+  }
+  .location-button--compact {
+    padding-inline: 5px;
+    font-size: 9px;
   }
   .section-heading h2,
   .products-section .section-heading h2 {
