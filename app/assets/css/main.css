@@ -937,7 +937,7 @@ section[id] {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: right 25%;
 }
 .business-shade {
   position: absolute;
@@ -948,7 +948,7 @@ section[id] {
   position: relative;
   padding: 23px 22px 20px max(calc((100vw - 1280px) / 2), var(--page-gutter));
   direction: rtl;
-  text-align: right;
+  text-align: left;
   max-width: 440px;
 }
 .business-copy .eyebrow {
@@ -961,7 +961,7 @@ section[id] {
   font-size: 23px;
   font-weight: 500;
   letter-spacing: -0.6px;
-  white-space: nowrap;
+  white-space: normal;
 }
 .business-copy h2 span {
   color: #d6af80;
@@ -972,8 +972,18 @@ section[id] {
   margin-block-start: 5px;
   color: #e2e0db;
 }
-.business-copy .base-button {
-  margin-block-start: 12px;
+.business-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  direction: ltr;
+  gap: 12px;
+  margin-block-start: 18px;
+}
+.business-actions .base-button {
+  direction: rtl;
+  margin: 0;
   min-height: 32px;
   padding: 4px 15px;
   font-size: 10px;
@@ -1371,11 +1381,11 @@ section[id] {
     min-height: clamp(380px, 27vw, 500px);
   }
   .business-shade {
-    background: linear-gradient(90deg, #111616fa 0%, #111616f0 30%, #1116168c 53%, transparent 80%);
+    background: linear-gradient(90deg, #11161699 0%, #11161666 32%, #1116161a 48%, transparent 62%);
   }
   .business-copy {
-    width: 52%;
-    max-width: 780px;
+    width: 50%;
+    max-width: 760px;
     padding: 40px clamp(32px, 3vw, 60px) 40px clamp(24px, 2.5vw, 48px);
   }
   .business-copy .eyebrow {
@@ -1393,7 +1403,7 @@ section[id] {
     background: #c29a7080;
   }
   .business-copy h2 {
-    font-size: clamp(34px, 2.7vw, 52px);
+    font-size: clamp(32px, 2.4vw, 46px);
     line-height: 1.45;
     white-space: normal;
     font-weight: 550;
@@ -1403,12 +1413,15 @@ section[id] {
     font-size: clamp(15px, 1vw, 19px);
     line-height: 1.9;
   }
-  .business-copy .base-button {
-    min-height: 48px;
-    padding: 10px 24px;
+  .business-actions {
     margin-block-start: 24px;
+  }
+  .business-actions .base-button {
+    min-height: 48px;
+    padding: 10px 18px;
+    margin-block-start: 0;
     font-size: 14px;
-    gap: 24px;
+    gap: 12px;
   }
   .business-note {
     margin-block-start: 10px;
@@ -1596,14 +1609,32 @@ section[id] {
     grid-template-columns: 1fr;
   }
   .business-banner {
-    min-height: 220px;
+    min-height: 360px;
   }
   .business-copy {
-    max-width: 350px;
-    padding-inline: 25px var(--page-gutter);
+    width: 55%;
+    max-width: 600px;
+    padding: 32px var(--page-gutter);
+  }
+  .business-copy h2 {
+    font-size: 28px;
+  }
+  .business-copy > p:not(.eyebrow) {
+    font-size: 13px;
+    margin-block-start: 12px;
+  }
+  .business-actions .base-button {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 12px;
+    gap: 10px;
+  }
+  .business-note {
+    font-size: 10px;
+    margin-block-start: 10px;
   }
   .business-banner > img {
-    object-position: center 50%;
+    object-position: right 40%;
   }
   .service-highlights {
     min-height: 155px;
@@ -1952,40 +1983,57 @@ section[id] {
     padding-inline: var(--page-gutter);
   }
   .business-banner {
-    min-height: 178px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
     border-radius: 6px;
   }
   .business-copy {
-    max-width: 265px;
-    padding: 14px 9px 12px 13px;
+    width: 100%;
+    max-width: none;
+    padding: 12px 18px 22px;
+    background: #111616;
   }
   .business-copy .eyebrow {
-    font-size: 8px;
+    font-size: 9px;
     letter-spacing: 1.5px;
+    margin-block-end: 10px;
   }
   .business-copy h2 {
-    font-size: 18px;
+    font-size: 23px;
+    line-height: 1.6;
     letter-spacing: -0.5px;
   }
   .business-copy > p:not(.eyebrow) {
-    font-size: 10px;
-    margin-block-start: 3px;
+    font-size: 12px;
+    line-height: 1.9;
+    margin-block-start: 12px;
   }
-  .business-copy .base-button {
-    font-size: 9px;
-    min-height: 29px;
-    padding: 3px 11px;
-    gap: 11px;
-    margin-block-start: 9px;
+  .business-actions {
+    gap: 9px;
+    margin-block-start: 18px;
+  }
+  .business-actions .base-button {
+    width: 100%;
+    font-size: 12px;
+    min-height: 40px;
+    padding: 7px 14px;
+    gap: 12px;
+    margin: 0;
   }
   .business-note {
-    font-size: 7px;
+    font-size: 9px;
+    margin-block-start: 12px;
   }
   .business-banner > img {
-    object-position: 59% center;
+    position: relative;
+    height: 180px;
+    object-position: right 40%;
   }
   .business-shade {
-    background: linear-gradient(100deg, #111616fa 0%, #111616e8 43%, #11161610 85%);
+    inset: 0 0 auto;
+    height: 181px;
+    background: linear-gradient(0deg, #111616 0%, #11161600 48%);
   }
   .service-highlights {
     min-height: 131px;
@@ -2123,14 +2171,13 @@ section[id] {
     margin-block-start: 5px;
   }
   .business-copy {
-    max-width: 310px;
-    padding-inline-start: 17px;
+    max-width: none;
   }
   .business-banner {
-    min-height: 176px;
+    min-height: 0;
   }
   .business-copy h2 {
-    font-size: 21px;
+    font-size: 25px;
   }
 }
 
@@ -2199,7 +2246,7 @@ section[id] {
     font-size: 12px;
   }
   .business-copy h2 {
-    font-size: 17px;
+    font-size: 21px;
   }
   .service-item h3 {
     font-size: 8px;
