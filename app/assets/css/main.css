@@ -1112,6 +1112,7 @@ section[id] {
   min-height: 94px;
   padding-block: 18px;
   color: var(--text-secondary);
+  flex-wrap: wrap;
 }
 .site-footer > div {
   display: flex;
@@ -1199,6 +1200,20 @@ section[id] {
 .project-card:focus-visible {
   outline-offset: -3px;
   outline-color: #c29a70;
+}
+
+.site-footer > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  color: #795c3d;
+  transition: color 180ms ease;
+}
+
+.site-footer > a:hover {
+  color: #242729;
 }
 
 @media (min-width: 1600px) {
@@ -1481,10 +1496,10 @@ section[id] {
   }
   .site-footer {
     width: 100%;
-    min-height: 154px;
     padding: 32px clamp(24px, 2.5vw, 48px);
-    border-top: 1px solid var(--color-border);
     gap: 28px;
+    min-height: 154px;
+    border-top: 1px solid #d5cbbd80;
   }
   .site-footer > div {
     gap: 26px;
@@ -2095,26 +2110,34 @@ section[id] {
     margin-block-start: 20px;
   }
   .site-footer {
-    min-height: 72px;
-    padding-block: 13px 18px;
     border-top: 1px solid var(--color-border);
-    gap: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    min-height: 124px;
+    padding: 20px 0 24px;
+    gap: 10px 16px;
   }
   .site-footer .brand {
-    gap: 5px;
+    gap: 7px;
   }
   .site-footer .brand-mark {
-    width: 20px;
-    height: 24px;
+    width: 26px;
+    height: 31px;
   }
   .site-footer .brand > span {
-    font-size: 21px;
+    font-size: 25px;
   }
   .site-footer > p {
-    font-size: 8px;
+    font-size: 11px;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    line-height: 1.9;
   }
   .site-footer > a {
-    display: none;
+    display: inline-flex;
+    font-size: 11px;
+    grid-column: 2;
+    grid-row: 1;
   }
   .mobile-bottom-nav {
     position: fixed;
