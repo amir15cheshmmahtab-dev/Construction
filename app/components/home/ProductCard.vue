@@ -13,7 +13,7 @@ const ui = useUiStore()
       <img
         :src="product.image"
         :srcset="`${product.image.replace('.webp', '-320.webp')} 320w, ${product.image} 640w`"
-        sizes="(max-width: 767px) 46vw, 16vw"
+        sizes="(max-width: 767px) 44vw, (max-width: 1023px) 158px, 18vw"
         :alt="product.name"
         width="640"
         height="640"
@@ -28,7 +28,7 @@ const ui = useUiStore()
         :aria-pressed="ui.favoriteIds.includes(product.id)"
         @click="ui.toggleFavorite(product.id)"
       >
-        <Heart :size="17" :stroke-width="1.6" />
+        <Heart :size="19" :stroke-width="1.6" aria-hidden="true" />
       </button>
     </div>
     <div class="product-info">
@@ -48,7 +48,7 @@ const ui = useUiStore()
         )
       "
     >
-      <ShoppingCart :size="14" :stroke-width="1.5" aria-hidden="true" /><span>افزودن به سبد</span>
+      <ShoppingCart :size="16" :stroke-width="1.6" aria-hidden="true" /><span>افزودن به سبد</span>
     </button>
   </article>
 </template>
