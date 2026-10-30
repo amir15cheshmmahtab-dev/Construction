@@ -1,0 +1,16 @@
+node_modules/
+.nuxt/
+.output/
+.cache/
+.data/
+coverage/
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Local tool metadata and credentials
+.agents/
+.codex/
+.aws/
