@@ -850,10 +850,10 @@ section[id] {
   background: #fff;
 }
 .favorite-button.is-favorite {
-  color: #946940;
+  color: #dc2626;
 }
 .favorite-button.is-favorite svg {
-  fill: #a67c523d;
+  fill: currentColor;
 }
 .product-info {
   padding: 8px 1px 9px;
