@@ -1437,6 +1437,30 @@ section[id] {
     inset-block-end: 15px;
     font-size: 11px;
   }
+  .site-footer {
+    width: 100%;
+    min-height: 154px;
+    padding: 32px clamp(24px, 2.5vw, 48px);
+    border-top: 1px solid var(--color-border);
+    gap: 28px;
+  }
+  .site-footer > div {
+    gap: 26px;
+  }
+  .site-footer .brand > span {
+    font-size: 38px;
+  }
+  .site-footer .brand-mark {
+    width: 40px;
+    height: 46px;
+  }
+  .site-footer > div > span {
+    font-size: 15px;
+  }
+  .site-footer > p,
+  .site-footer > a {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1023px) {
