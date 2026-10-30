@@ -316,9 +316,9 @@ section[id] {
   color: #e0cfb9;
 }
 .location-button--compact {
-  margin-inline-start: 8px;
+  margin-inline-start: 4px;
   padding-inline: 16px;
-  border-inline-start: 1px solid #d5cec2;
+  border-inline-start: 1px solid #a5937b33;
 }
 .mobile-menu-button {
   display: none;
@@ -425,7 +425,7 @@ section[id] {
 }
 .home-hero {
   position: relative;
-  height: clamp(440px, 34.8vw, 530px);
+  height: clamp(460px, 34.8vw, 530px);
   overflow: visible;
   color: white;
   background: #292b29;
@@ -444,13 +444,13 @@ section[id] {
 }
 .hero-shade {
   background:
-    linear-gradient(90deg, #0d1110b5 0%, #10131154 31%, transparent 59%),
-    linear-gradient(0deg, #1115103d 0%, transparent 40%);
+    linear-gradient(90deg, #0d1110c2 0%, #10131166 29%, transparent 61%),
+    linear-gradient(0deg, #11151036 0%, transparent 42%);
 }
 .hero-content {
   position: relative;
   height: 100%;
-  padding-block-start: 103px;
+  padding-block-start: 96px;
 }
 .hero-copy {
   width: 460px;
@@ -463,7 +463,7 @@ section[id] {
   align-items: center;
   gap: 26px;
   direction: ltr;
-  margin-block-end: 14px;
+  margin-block-end: 12px;
   padding-inline-start: 10px;
 }
 .hero-eyebrow span {
@@ -479,25 +479,25 @@ section[id] {
   background: #c29a7085;
 }
 .hero-copy h1 {
-  font-size: clamp(30px, 2.65vw, 41px);
+  font-size: clamp(32px, 2.7vw, 42px);
   line-height: 1.55;
-  font-weight: 650;
-  letter-spacing: -1.1px;
+  font-weight: 600;
+  letter-spacing: -0.8px;
 }
 .hero-copy h1 span {
   color: #d0a372;
 }
 .hero-copy > p {
-  color: #efeeea;
-  font-size: 13px;
-  line-height: 1.9;
-  margin-block-start: 9px;
+  font-size: 14px;
+  line-height: 1.85;
+  margin-block-start: 10px;
+  color: #f2eee8;
 }
 .hero-cta {
-  margin-block-start: 15px;
-  min-height: 36px;
-  padding: 6px 21px;
-  gap: 29px;
+  min-height: 44px;
+  padding: 8px 24px;
+  gap: 24px;
+  margin-block-start: 14px;
 }
 .hero-search {
   position: absolute;
@@ -506,25 +506,30 @@ section[id] {
   display: flex;
   align-items: center;
   width: 510px;
-  height: 53px;
-  padding: 5px;
-  border-radius: 7px;
   color: var(--color-charcoal);
-  background: #fffdf7f5;
-  border: 1px solid #fffffff0;
-  box-shadow: 0 6px 25px #00000018;
   z-index: 5;
+  height: 60px;
+  padding: 6px;
+  border-radius: 8px;
+  background: #fffdf7ed;
+  border: 1px solid #ffffffde;
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 12px 30px #10171024,
+    0 2px 6px #10171010,
+    inset 0 1px 0 #fff;
 }
 .search-submit {
-  width: 43px;
-  height: 41px;
-  background: var(--color-bronze);
   color: white;
   display: grid;
   place-items: center;
-  border-radius: 5px;
   flex-shrink: 0;
   transition: background 180ms;
+  width: 46px;
+  height: 46px;
+  background: var(--color-bronze-action);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 #ffffff2e;
 }
 .search-submit:hover {
   background: #8c653e;
@@ -537,11 +542,11 @@ section[id] {
 .search-input-wrap input {
   background: transparent;
   width: 100%;
-  padding: 10px 11px;
   color: var(--color-charcoal);
-  font-size: 10px;
-  line-height: 2;
   outline: none;
+  font-size: 12px;
+  padding: 10px 14px;
+  line-height: 2;
 }
 .search-input-wrap input:focus-visible {
   outline: 1px solid var(--accent);
@@ -556,30 +561,32 @@ section[id] {
 }
 .search-clear {
   position: absolute;
-  inset-inline-end: 4px;
   inset-block-start: 50%;
   transform: translateY(-50%);
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 26px;
-  background: var(--color-ivory);
+  width: 44px;
+  height: 44px;
+  inset-inline-end: 0;
+  background: #fffdf7;
+  border-radius: 4px;
 }
 .search-results {
   position: absolute;
   inset: calc(100% + 8px) 0 auto;
   color: var(--color-charcoal);
-  background: var(--color-ivory);
-  box-shadow: 0 12px 35px #0003;
   border: 1px solid var(--color-border);
-  border-radius: 7px;
-  padding: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  border-color: #dfd6c8;
+  background: #fdfbf6;
+  box-shadow: 0 12px 32px #1d211c24;
 }
 .search-results-label {
-  padding: 5px 9px 9px;
-  font-size: 10px;
   color: var(--text-secondary);
   border-bottom: 1px solid var(--color-border);
+  font-size: 11px;
+  padding: 7px 10px 10px;
 }
 .search-results li button {
   display: flex;
@@ -587,20 +594,21 @@ section[id] {
   gap: 12px;
   width: 100%;
   text-align: start;
-  padding: 9px;
-  border-radius: 3px;
+  min-height: 52px;
+  padding: 10px;
+  border-radius: 4px;
 }
 .search-results li button:hover {
   background: var(--color-cream);
 }
 .search-results li button > span {
   flex: 1;
-  font-size: 12px;
+  font-size: 13px;
 }
 .search-results small {
   display: block;
   color: var(--text-secondary);
-  font-size: 10px;
+  font-size: 11px;
 }
 .search-empty {
   padding: 18px 9px;
@@ -1129,12 +1137,23 @@ section[id] {
   background: #ffffff12;
 }
 
+.hero-search:focus-within {
+  border-color: #d3b18b;
+  box-shadow:
+    0 12px 30px #10171024,
+    0 0 0 3px #c29a7026;
+}
+
+.search-input-wrap:has(.search-clear) input {
+  padding-inline-end: 44px;
+}
+
 @media (min-width: 1600px) {
   .hero-copy {
     width: 490px;
   }
   .hero-content {
-    padding-block-start: 116px;
+    padding-block-start: 104px;
   }
   .hero-search {
     width: 545px;
@@ -1168,7 +1187,7 @@ section[id] {
     font-size: 12px;
   }
   .hero-cta {
-    min-height: 32px;
+    min-height: 44px;
     margin-block-start: 12px;
   }
   :root {
@@ -1547,8 +1566,8 @@ section[id] {
     font-size: 32px;
   }
   .hero-search {
-    width: min(510px, 90%);
     inset-block-end: 24px;
+    width: min(540px, 94%);
   }
   .hero-bottom-caption {
     display: none;
@@ -1716,8 +1735,8 @@ section[id] {
     width: 22px;
   }
   .home-hero {
-    height: 341px;
-    margin-block-end: 15px;
+    height: 370px;
+    margin-block-end: 18px;
   }
   .hero-picture img {
     object-position: 57% center;
@@ -1731,9 +1750,9 @@ section[id] {
     padding-block-start: 19px;
   }
   .hero-copy {
-    width: 288px;
-    max-width: 85%;
-    padding-inline: 12px 4px;
+    width: 300px;
+    max-width: 92%;
+    padding-inline: 8px 2px;
   }
   .hero-eyebrow {
     margin-block-end: 6px;
@@ -1741,58 +1760,58 @@ section[id] {
     padding-inline-start: 4px;
   }
   .hero-eyebrow span {
-    font-size: 8px;
-    letter-spacing: 2.1px;
     line-height: 1.5;
+    font-size: 9px;
+    letter-spacing: 2px;
   }
   .hero-eyebrow i {
     width: 47px;
   }
   .hero-copy h1 {
-    font-size: clamp(24px, 6.8vw, 32px);
-    line-height: 1.6;
     letter-spacing: -0.6px;
-    font-weight: 650;
+    font-size: clamp(25px, 7.1vw, 32px);
+    line-height: 1.65;
+    font-weight: 600;
   }
   .hero-copy > p {
-    font-size: 11px;
-    line-height: 1.9;
-    margin-block-start: 5px;
+    font-size: 12px;
+    line-height: 1.95;
+    margin-block-start: 8px;
   }
   .hero-cta {
     margin-block-start: 12px;
-    min-height: 35px;
-    padding: 5px 17px;
-    gap: 26px;
-    font-size: 11px;
+    min-height: 44px;
+    font-size: 12px;
+    padding: 8px 20px;
+    gap: 24px;
   }
   .hero-search {
-    height: 52px;
+    height: 60px;
     width: 100%;
-    inset-block-end: -13px;
+    inset-block-end: -18px;
+    padding: 6px;
+    background: #fffdf7f5;
     border-radius: 7px;
-    padding: 5px;
-    background: #fffdf8;
   }
   .search-submit {
-    width: 39px;
-    height: 40px;
+    width: 44px;
+    height: 46px;
   }
   .search-submit svg {
     width: 22px;
   }
   .search-input-wrap input {
-    padding-inline: 9px;
-    font-size: 9px;
+    font-size: 16px;
+    padding-inline: 10px;
   }
   .location-button--compact {
+    margin-inline-start: 0;
+    font-size: 11px;
     padding-inline: 9px;
     gap: 4px;
-    font-size: 10px;
-    margin-inline-start: 0;
   }
   .location-button--compact > svg:first-child {
-    width: 13px;
+    width: 14px;
   }
   .location-button--compact > svg:last-child {
     width: 11px;
@@ -2144,6 +2163,9 @@ section[id] {
   .toast-message p {
     font-size: 11px;
   }
+  .search-input-wrap input::placeholder {
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
@@ -2151,7 +2173,7 @@ section[id] {
     --page-gutter: 24px;
   }
   .home-hero {
-    height: 365px;
+    height: 390px;
   }
   .hero-copy {
     width: 340px;
@@ -2221,17 +2243,6 @@ section[id] {
   }
   .hero-copy h1 {
     font-size: 25px;
-  }
-  .home-hero {
-    height: 330px;
-  }
-  .search-input-wrap input {
-    font-size: 8px;
-    padding-inline: 6px;
-  }
-  .location-button--compact {
-    padding-inline: 5px;
-    font-size: 9px;
   }
   .category-label {
     font-size: 8px;
