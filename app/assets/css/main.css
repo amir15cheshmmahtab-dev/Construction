@@ -2287,3 +2287,13 @@ section[id] {
     color: #fff;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .base-button:hover,
+  .category-card:hover .category-image img,
+  .project-card:hover > img,
+  .product-card:hover,
+  .product-card:hover .product-image-wrap > img {
+    transform: none;
+  }
+}
