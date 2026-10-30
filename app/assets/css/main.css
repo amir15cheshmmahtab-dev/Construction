@@ -341,6 +341,45 @@ section[id] {
 .section-heading .base-button {
   margin-block-start: 18px;
 }
+.toast-region {
+  position: fixed;
+  inset-block-end: 28px;
+  inset-inline: 20px;
+  z-index: 100;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+.toast-message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: max-content;
+  max-width: 560px;
+  padding: 14px 18px;
+  background: #242729fa;
+  color: var(--color-ivory);
+  box-shadow: 0 8px 40px #0003;
+  border: 1px solid #ffffff30;
+  border-radius: 7px;
+  pointer-events: auto;
+}
+.toast-message > svg {
+  color: #d4ad82;
+  flex-shrink: 0;
+}
+.toast-message p {
+  font-size: 12px;
+  line-height: 1.9;
+}
+.toast-message button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 30px;
+  color: #eee;
+  flex-shrink: 0;
+}
 
 @media (min-width: 1024px) and (max-width: 1199px) {
   :root {
@@ -461,6 +500,17 @@ section[id] {
     font-size: 10px;
     line-height: 1.9;
     margin-block-start: 1px;
+  }
+  .toast-region {
+    inset-block-end: calc(79px + env(safe-area-inset-bottom, 0px));
+    inset-inline: 12px;
+  }
+  .toast-message {
+    padding: 11px 12px;
+    gap: 9px;
+  }
+  .toast-message p {
+    font-size: 11px;
   }
 }
 
