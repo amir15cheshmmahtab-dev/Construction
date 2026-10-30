@@ -1236,6 +1236,65 @@ section[id] {
   }
 }
 
+/* Home showcases fill the desktop viewport instead of the reading-width container. */
+@media (min-width: 1024px) {
+  .category-grid,
+  .editorial-section {
+    width: 100%;
+    padding-inline: clamp(24px, 2.5vw, 48px);
+  }
+  .categories-section {
+    padding-block: 32px 28px;
+  }
+  .category-grid {
+    gap: clamp(12px, 1vw, 20px);
+  }
+  .category-image {
+    aspect-ratio: 1.45;
+  }
+  .category-label {
+    padding: 14px 10px 0 3px;
+    gap: 8px;
+    font-size: clamp(12px, 0.9vw, 17px);
+  }
+  .category-label > svg {
+    width: 25px;
+    height: 25px;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .collections-surface {
+    padding-block: 40px 30px;
+  }
+  .editorial-section {
+    grid-template-columns: clamp(220px, 16vw, 300px) minmax(0, 1fr);
+    column-gap: clamp(28px, 2.2vw, 44px);
+  }
+  .section-heading .eyebrow {
+    font-size: 12px;
+    margin-block-end: 18px;
+  }
+  .section-heading h2,
+  .products-section .section-heading h2 {
+    font-size: clamp(28px, 2.15vw, 40px);
+  }
+  .section-description {
+    font-size: clamp(14px, 0.95vw, 18px);
+    line-height: 2;
+  }
+  .heading-rule {
+    width: 28px;
+    margin-block: 16px 20px;
+  }
+  .section-heading .base-button,
+  .products-section .section-heading .base-button {
+    min-height: 48px;
+    padding: 10px 22px;
+    font-size: 14px;
+    margin-block-start: 24px;
+  }
+}
+
 @media (max-width: 1023px) {
   :root {
     --page-gutter: 28px;
