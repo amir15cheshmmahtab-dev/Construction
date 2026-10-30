@@ -1,0 +1,352 @@
+{
+  "viewports": [
+    {
+      "viewport": 1440,
+      "scrollWidth": 1440,
+      "bodyScrollWidth": 1440,
+      "overflow": false,
+      "h1Count": 1,
+      "lang": "fa",
+      "dir": "rtl",
+      "brokenImages": [],
+      "imageCount": 20,
+      "scrollY": 0,
+      "heroImage": {
+        "src": "http://localhost:3001/images/hero/residence.webp",
+        "naturalWidth": 1440,
+        "width": 1440,
+        "height": 501.109375,
+        "top": 0,
+        "opacity": "1",
+        "visibility": "visible",
+        "display": "block",
+        "objectFit": "cover",
+        "objectPosition": "50% 50%"
+      },
+      "unnamedButtons": 0,
+      "overflowingElements": [],
+      "screenshot": "previews/home-1440.webp"
+    },
+    {
+      "viewport": 390,
+      "scrollWidth": 390,
+      "bodyScrollWidth": 390,
+      "overflow": false,
+      "h1Count": 1,
+      "lang": "fa",
+      "dir": "rtl",
+      "brokenImages": [],
+      "imageCount": 20,
+      "scrollY": 0,
+      "heroImage": {
+        "src": "http://localhost:3001/images/hero/residence.webp",
+        "naturalWidth": 389,
+        "width": 390,
+        "height": 341,
+        "top": 66,
+        "opacity": "1",
+        "visibility": "visible",
+        "display": "block",
+        "objectFit": "cover",
+        "objectPosition": "57% 50%"
+      },
+      "unnamedButtons": 0,
+      "overflowingElements": [
+        {
+          "tag": "BUTTON",
+          "class": "project-card",
+          "left": 311,
+          "right": 451
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 311,
+          "right": 451
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-shade",
+          "left": 311,
+          "right": 451
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-label",
+          "left": 320,
+          "right": 442
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "left": 388,
+          "right": 442
+        },
+        {
+          "tag": "BUTTON",
+          "class": "project-card",
+          "left": 459,
+          "right": 598
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 459,
+          "right": 598
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-shade",
+          "left": 459,
+          "right": 598
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-label",
+          "left": 468,
+          "right": 589
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "left": 538,
+          "right": 589
+        }
+      ],
+      "screenshot": "previews/home-390.webp"
+    },
+    {
+      "viewport": 768,
+      "scrollWidth": 768,
+      "bodyScrollWidth": 768,
+      "overflow": false,
+      "h1Count": 1,
+      "lang": "fa",
+      "dir": "rtl",
+      "brokenImages": [],
+      "imageCount": 20,
+      "scrollY": 0,
+      "heroImage": {
+        "src": "http://localhost:3001/images/hero/residence.webp",
+        "naturalWidth": 768,
+        "width": 768,
+        "height": 425,
+        "top": 71,
+        "opacity": "1",
+        "visibility": "visible",
+        "display": "block",
+        "objectFit": "cover",
+        "objectPosition": "50% 50%"
+      },
+      "unnamedButtons": 0,
+      "overflowingElements": [
+        {
+          "tag": "BUTTON",
+          "class": "category-card",
+          "left": 663,
+          "right": 778
+        },
+        {
+          "tag": "DIV",
+          "class": "category-image",
+          "left": 663,
+          "right": 778
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 663,
+          "right": 778
+        },
+        {
+          "tag": "SPAN",
+          "class": "category-label",
+          "left": 663,
+          "right": 778
+        },
+        {
+          "tag": "BUTTON",
+          "class": "category-card",
+          "left": 790,
+          "right": 905
+        },
+        {
+          "tag": "DIV",
+          "class": "category-image",
+          "left": 790,
+          "right": 905
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 790,
+          "right": 905
+        },
+        {
+          "tag": "SPAN",
+          "class": "category-label",
+          "left": 790,
+          "right": 905
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "left": 865,
+          "right": 896
+        },
+        {
+          "tag": "svg",
+          "class": {},
+          "left": 792,
+          "right": 811
+        }
+      ],
+      "screenshot": "previews/home-768.webp"
+    },
+    {
+      "viewport": 1024,
+      "scrollWidth": 1024,
+      "bodyScrollWidth": 1024,
+      "overflow": false,
+      "h1Count": 1,
+      "lang": "fa",
+      "dir": "rtl",
+      "brokenImages": [],
+      "imageCount": 20,
+      "scrollY": 0,
+      "heroImage": {
+        "src": "http://localhost:3001/images/hero/residence.webp",
+        "naturalWidth": 1024,
+        "width": 1024,
+        "height": 440,
+        "top": 0,
+        "opacity": "1",
+        "visibility": "visible",
+        "display": "block",
+        "objectFit": "cover",
+        "objectPosition": "50% 50%"
+      },
+      "unnamedButtons": 0,
+      "overflowingElements": [],
+      "screenshot": "previews/home-1024.webp"
+    },
+    {
+      "viewport": 320,
+      "scrollWidth": 320,
+      "bodyScrollWidth": 320,
+      "overflow": false,
+      "h1Count": 1,
+      "lang": "fa",
+      "dir": "rtl",
+      "brokenImages": [],
+      "imageCount": 20,
+      "scrollY": 0,
+      "heroImage": {
+        "src": "http://localhost:3001/images/hero/residence.webp",
+        "naturalWidth": 320,
+        "width": 320,
+        "height": 330,
+        "top": 66,
+        "opacity": "1",
+        "visibility": "visible",
+        "display": "block",
+        "objectFit": "cover",
+        "objectPosition": "57% 50%"
+      },
+      "unnamedButtons": 0,
+      "overflowingElements": [
+        {
+          "tag": "BUTTON",
+          "class": "project-card",
+          "left": 250,
+          "right": 361
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 250,
+          "right": 361
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-shade",
+          "left": 250,
+          "right": 361
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-label",
+          "left": 256,
+          "right": 355
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "left": 307,
+          "right": 355
+        },
+        {
+          "tag": "BUTTON",
+          "class": "project-card",
+          "left": 369,
+          "right": 480
+        },
+        {
+          "tag": "IMG",
+          "class": "",
+          "left": 369,
+          "right": 480
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-shade",
+          "left": 369,
+          "right": 480
+        },
+        {
+          "tag": "SPAN",
+          "class": "project-card-label",
+          "left": 375,
+          "right": 474
+        },
+        {
+          "tag": "SPAN",
+          "class": "",
+          "left": 428,
+          "right": 474
+        }
+      ],
+      "screenshot": "previews/home-320.webp"
+    }
+  ],
+  "interactions": [
+    {
+      "name": "mobile menu opens and Escape restores focus",
+      "pass": true
+    },
+    {
+      "name": "location modal opens and Tehran selection closes",
+      "pass": true
+    },
+    {
+      "name": "favorite toggles on and off with aria-pressed",
+      "pass": true
+    },
+    {
+      "name": "search matches Persian query and selects suggestion",
+      "pass": true
+    },
+    {
+      "name": "search empty state then clear and empty submit",
+      "pass": true
+    },
+    {
+      "name": "cart explains preview behavior",
+      "pass": true
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "hydrationWarnings": [],
+  "failedRequests": []
+}
