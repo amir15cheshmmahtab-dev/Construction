@@ -1,0 +1,61 @@
+import type { Product } from '~/types/marketplace'
+
+// Illustrative prices only, NOT live offers. Every amount is in Iranian rials.
+// Manufacturer, origin, warranty and stock remain unverified and are not invented.
+export const products: Product[] = [
+  {
+    id: 'cement-02',
+    slug: 'portland-cement-type-2',
+    name: 'سیمان پرتلند تیپ ۲',
+    image: '/images/products/cement.webp',
+    categoryId: 'cement',
+    priceRial: 2140000,
+    unit: 'پاکت',
+    spec: 'پاکت ۵۰ کیلوگرمی',
+    availability: 'unknown',
+  },
+  {
+    id: 'brick-red',
+    slug: 'red-facing-brick',
+    name: 'آجر نمای قرمز',
+    image: '/images/products/brick.webp',
+    categoryId: 'cement',
+    priceRial: 12000,
+    unit: 'عدد',
+    spec: 'ابعاد ۲۰ × ۱۰ × ۵ سانتی‌متر',
+    availability: 'unknown',
+  },
+  {
+    id: 'rebar-a3',
+    slug: 'ribbed-rebar-a3',
+    name: 'میلگرد آجدار A3',
+    image: '/images/products/rebar.webp',
+    categoryId: 'rebar',
+    priceRial: 385000,
+    unit: 'کیلوگرم',
+    spec: 'قطر ۱۶ میلی‌متر',
+    availability: 'unknown',
+  },
+  {
+    id: 'faucet-bronze',
+    slug: 'modern-basin-faucet',
+    name: 'شیر روشویی مدرن',
+    image: '/images/products/faucet.webp',
+    categoryId: 'bathroom',
+    priceRial: 29000000,
+    unit: 'عدد',
+    spec: 'پوشش برنز برس‌خورده',
+    availability: 'unknown',
+  },
+  {
+    id: 'tiles-travertine',
+    slug: 'travertine-ceramic-tiles',
+    name: 'سرامیک طرح تراورتن',
+    image: '/images/products/tiles.webp',
+    categoryId: 'stone',
+    priceRial: 18500000,
+    unit: 'مترمربع',
+    spec: 'ابعاد ۶۰ × ۶۰ سانتی‌متر',
+    availability: 'unknown',
+  },
+]
