@@ -143,6 +143,34 @@ section[id] {
 .icon-button:hover {
   background: #a67c5215;
 }
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  color: var(--color-ink);
+}
+.brand > span {
+  font-size: 33px;
+  font-weight: 800;
+  letter-spacing: -1.8px;
+  line-height: 1;
+}
+.brand-mark {
+  width: 39px;
+  height: 45px;
+  color: #795532;
+}
+.brand--small .brand-mark {
+  width: 26px;
+  height: 31px;
+}
+.brand--small > span {
+  font-size: 24px;
+}
+.brand--light {
+  color: var(--color-ivory);
+}
 .base-button {
   display: inline-flex;
   align-items: center;
@@ -242,6 +270,12 @@ section[id] {
   :root {
     --page-gutter: 44px;
   }
+  .brand > span {
+    font-size: 29px;
+  }
+  .brand-mark {
+    width: 32px;
+  }
   .editorial-section {
     grid-template-columns: 175px minmax(0, 1fr);
     column-gap: 23px;
@@ -254,6 +288,13 @@ section[id] {
 @media (max-width: 1023px) {
   :root {
     --page-gutter: 28px;
+  }
+  .brand > span {
+    font-size: 31px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 40px;
   }
   .collections-surface {
     padding-block-start: 26px;
@@ -291,6 +332,17 @@ section[id] {
   }
   .site-shell {
     padding-block-end: calc(67px + env(safe-area-inset-bottom, 0px));
+  }
+  .brand {
+    gap: 8px;
+  }
+  .brand > span {
+    font-size: 28px;
+    letter-spacing: -1px;
+  }
+  .brand-mark {
+    width: 31px;
+    height: 36px;
   }
   .collections-surface {
     padding-block: 14px 16px;
@@ -333,6 +385,12 @@ section[id] {
 @media (max-width: 359px) {
   :root {
     --page-gutter: 12px;
+  }
+  .brand > span {
+    font-size: 25px;
+  }
+  .brand-mark {
+    width: 27px;
   }
   .section-heading h2,
   .products-section .section-heading h2 {
