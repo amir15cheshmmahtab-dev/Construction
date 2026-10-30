@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { Category, Product } from '~/types/home'
-import { brand } from '~/data/home'
 defineProps<{ products: Product[]; categories: Category[] }>()
 </script>
 
@@ -36,11 +35,6 @@ defineProps<{ products: Product[]; categories: Category[] }>()
         <UiBaseButton class="hero-cta" href="#projects">شروع کنید</UiBaseButton>
       </div>
       <SharedSearchBar :products="products" :categories="categories" />
-      <div class="hero-pagination" :aria-label="`نگاه ${brand.name}`">
-        <span class="slide-number" dir="ltr">01</span><span class="pagination-line" />
-        <span class="slide-total" dir="ltr">03</span>
-        <p>کیفیت<br />اعتماد<br />ساختن آینده</p>
-      </div>
     </div>
     <span class="hero-bottom-caption" dir="ltr">A BETTER FOUNDATION FOR TOMORROW</span>
   </section>

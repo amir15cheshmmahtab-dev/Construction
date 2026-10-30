@@ -597,20 +597,6 @@ section[id] {
   padding: 18px 9px;
   font-size: 12px;
 }
-.hero-pagination {
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-end: 30px;
-  display: grid;
-  justify-items: center;
-  width: 55px;
-  font-weight: 300;
-}
-.slide-number { font-size: 24px; line-height: 1.4; font-weight: 250; }
-.pagination-line { width: 22px; height: 1px; margin-block: 7px; background: #dfd4c5; }
-.slide-total { font-size: 11px; color: #e5dfd7; letter-spacing: 2px; }
-.hero-pagination p { margin-block-start: 17px; font-size: 11px; line-height: 1.7; text-align: center; }
-
 .hero-bottom-caption {
   position: absolute;
   inset-block-end: 20px;
@@ -1427,20 +1413,6 @@ section[id] {
     width: min(510px, 90%);
     inset-block-end: 24px;
   }
-.hero-pagination {
-  position: absolute;
-  inset-inline-start: 0;
-  inset-block-end: 30px;
-  display: grid;
-  justify-items: center;
-  width: 55px;
-  font-weight: 300;
-}
-.slide-number { font-size: 24px; line-height: 1.4; font-weight: 250; }
-.pagination-line { width: 22px; height: 1px; margin-block: 7px; background: #dfd4c5; }
-.slide-total { font-size: 11px; color: #e5dfd7; letter-spacing: 2px; }
-.hero-pagination p { margin-block-start: 17px; font-size: 11px; line-height: 1.7; text-align: center; }
-
   .hero-bottom-caption {
     display: none;
   }
@@ -1670,7 +1642,6 @@ section[id] {
   .location-button--compact > svg:last-child {
     width: 11px;
   }
-  .hero-pagination { display: none; }
   .categories-section {
     padding-block: 18px 15px;
     border-radius: 0;
