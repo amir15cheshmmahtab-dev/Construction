@@ -457,6 +457,9 @@ section[id] {
 .section-heading .base-button {
   margin-block-start: 18px;
 }
+.mobile-bottom-nav {
+  display: none;
+}
 .toast-region {
   position: fixed;
   inset-block-end: 28px;
@@ -682,6 +685,34 @@ section[id] {
     font-size: 10px;
     line-height: 1.9;
     margin-block-start: 1px;
+  }
+  .mobile-bottom-nav {
+    position: fixed;
+    z-index: 30;
+    inset: auto 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: calc(64px + env(safe-area-inset-bottom, 0px));
+    padding-block: 8px calc(5px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid #e2ddd1d9;
+    background: #fcfbf7f7;
+    backdrop-filter: blur(12px);
+  }
+  .mobile-bottom-nav a,
+  .mobile-bottom-nav button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: #726d65;
+    font-size: 9px;
+    line-height: 1.7;
+  }
+  .mobile-bottom-nav .active {
+    color: #946a42;
+  }
+  .mobile-bottom-nav .active svg {
+    fill: #a67c5222;
   }
   .toast-region {
     inset-block-end: calc(79px + env(safe-area-inset-bottom, 0px));
