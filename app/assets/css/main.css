@@ -143,6 +143,49 @@ section[id] {
 .icon-button:hover {
   background: #a67c5215;
 }
+.base-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  min-height: 40px;
+  padding: 8px 22px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.8;
+  transition:
+    background 180ms,
+    transform 180ms,
+    box-shadow 180ms;
+  white-space: nowrap;
+}
+.base-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px #14141410;
+}
+.base-button--bronze {
+  color: white;
+  background: var(--color-bronze-action);
+  border-color: #b68a5f;
+}
+.base-button--bronze:hover {
+  background: #926942;
+}
+.base-button--dark {
+  color: var(--color-ivory);
+  background: var(--color-ink);
+}
+.base-button--dark:hover {
+  background: #303232;
+}
+.base-button--outline {
+  color: #e4c6a4;
+  border-color: var(--color-bronze-light);
+}
+.base-button--outline:hover {
+  background: #a67c5220;
+}
 .eyebrow {
   color: #946c45;
   font-size: 10px;
