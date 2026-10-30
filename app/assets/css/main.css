@@ -194,16 +194,88 @@ section[id] {
   font-weight: 500;
   text-align: left;
 }
+.collections-surface {
+  background: #fbfaf7;
+  padding-block: 30px 19px;
+  border-start-end-radius: 55px;
+}
+.editorial-section {
+  display: grid;
+  direction: ltr;
+  grid-template-columns: 212px minmax(0, 1fr);
+  column-gap: 31px;
+}
+.section-heading {
+  text-align: right;
+  direction: rtl;
+  align-self: center;
+  padding-inline-start: 5px;
+}
+.section-heading .eyebrow {
+  margin-block-end: 14px;
+}
+.section-heading h2 {
+  color: var(--color-ink);
+  font-size: 27px;
+  line-height: 1.6;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+.heading-rule {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: #8e6e4e;
+  margin-block: 12px 17px;
+  margin-inline-start: 0;
+}
+.section-description {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+.section-heading .base-button {
+  margin-block-start: 18px;
+}
 
 @media (min-width: 1024px) and (max-width: 1199px) {
   :root {
     --page-gutter: 44px;
+  }
+  .editorial-section {
+    grid-template-columns: 175px minmax(0, 1fr);
+    column-gap: 23px;
+  }
+  .section-heading h2 {
+    font-size: 24px;
   }
 }
 
 @media (max-width: 1023px) {
   :root {
     --page-gutter: 28px;
+  }
+  .collections-surface {
+    padding-block-start: 26px;
+  }
+  .editorial-section {
+    grid-template-columns: 150px minmax(0, 1fr);
+    column-gap: 22px;
+  }
+  .section-heading h2 {
+    font-size: 23px;
+  }
+  .section-heading .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+  .section-description {
+    font-size: 11px;
+  }
+  .section-heading .base-button {
+    padding-inline: 13px;
+    font-size: 10px;
+    gap: 12px;
   }
 }
 
@@ -220,6 +292,36 @@ section[id] {
   .site-shell {
     padding-block-end: calc(67px + env(safe-area-inset-bottom, 0px));
   }
+  .collections-surface {
+    padding-block: 14px 16px;
+    border-start-end-radius: 24px;
+    background: #fcfbf8;
+  }
+  .editorial-section {
+    position: relative;
+    display: block;
+    direction: rtl;
+  }
+  .section-heading {
+    padding: 0;
+    margin-block-end: 14px;
+  }
+  .section-heading h2 {
+    font-size: 22px;
+    line-height: 1.7;
+    font-weight: 600;
+    letter-spacing: -0.7px;
+  }
+  .section-heading .eyebrow,
+  .heading-rule,
+  .section-heading .base-button {
+    display: none;
+  }
+  .section-description {
+    font-size: 10px;
+    line-height: 1.9;
+    margin-block-start: 1px;
+  }
 }
 
 @media (min-width: 460px) and (max-width: 767px) {
@@ -231,5 +333,9 @@ section[id] {
 @media (max-width: 359px) {
   :root {
     --page-gutter: 12px;
+  }
+  .section-heading h2,
+  .products-section .section-heading h2 {
+    font-size: 20px;
   }
 }
