@@ -5,6 +5,13 @@ interface BusinessAction {
 }
 
 interface BusinessPromotion {
+  image: {
+    src: string
+    srcset: string
+    alt: string
+    width: number
+    height: number
+  }
   eyebrow: string
   headline: readonly [string, string]
   description: string
@@ -13,6 +20,15 @@ interface BusinessPromotion {
 }
 
 export const businessPromotion: BusinessPromotion = {
+  // Public assets are runtime URLs, not imports for Vite's asset pipeline.
+  image: {
+    src: '/images/business/partnership.webp',
+    srcset:
+      '/images/business/partnership-640.webp 640w, /images/business/partnership-960.webp 960w, /images/business/partnership.webp 1920w',
+    alt: 'همکاری نمایندگان تأمین‌کننده مصالح و شرکت ساختمانی در جلسه بررسی نمونه‌های مصالح و نقشه پروژه',
+    width: 1920,
+    height: 686,
+  },
   eyebrow: 'BUSINESS PARTNERSHIPS',
   headline: ['از فروش محصولات شما', 'تا تأمین پروژه‌های بزرگ'],
   description:

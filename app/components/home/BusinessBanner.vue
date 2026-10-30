@@ -7,12 +7,12 @@ const ui = useUiStore()
 <template>
   <div class="business-banner">
     <img
-      src="/images/business/partnership.webp"
-      srcset="/images/business/partnership-640.webp 640w, /images/business/partnership-960.webp 960w, /images/business/partnership.webp 1920w"
+      :src="businessPromotion.image.src"
+      :srcset="businessPromotion.image.srcset"
       sizes="100vw"
-      alt="همکاری نمایندگان تأمین‌کننده مصالح و شرکت ساختمانی در جلسه بررسی نمونه‌های مصالح و نقشه پروژه"
-      width="1920"
-      height="686"
+      :alt="businessPromotion.image.alt"
+      :width="businessPromotion.image.width"
+      :height="businessPromotion.image.height"
       loading="lazy"
       decoding="async"
     />
