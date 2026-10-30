@@ -1,0 +1,37 @@
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: opacity 220ms ease;
+}
+.drawer-enter-active .mobile-drawer,
+.drawer-leave-active .mobile-drawer {
+  transition: transform 260ms ease;
+}
+.drawer-enter-from,
+.drawer-leave-to {
+  opacity: 0;
+}
+.drawer-enter-from .mobile-drawer,
+.drawer-leave-to .mobile-drawer {
+  transform: translateX(100%);
+}
+.toast-enter-active,
+.toast-leave-active {
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+.toast-enter-from,
+.toast-leave-to {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
