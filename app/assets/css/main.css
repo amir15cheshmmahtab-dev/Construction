@@ -1293,6 +1293,24 @@ section[id] {
     font-size: 14px;
     margin-block-start: 24px;
   }
+  .project-track {
+    gap: clamp(12px, 1vw, 20px);
+  }
+  .project-card {
+    height: clamp(280px, 23vw, 420px);
+  }
+  .project-card-label {
+    inset: auto 16px 22px;
+    font-size: clamp(14px, 1vw, 19px);
+    gap: 12px;
+  }
+  .project-card-label > span {
+    max-width: 170px;
+  }
+  .project-card-label > i {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 @media (max-width: 1023px) {
