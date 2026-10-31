@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
-withDefaults(
+import { NuxtLink } from '#components'
+const props = withDefaults(
   defineProps<{ href?: string; variant?: 'bronze' | 'dark' | 'outline'; arrow?: boolean }>(),
   {
     href: undefined,
@@ -8,12 +9,14 @@ withDefaults(
     arrow: true,
   },
 )
+const isInternalRoute = computed(() => props.href?.startsWith('/') && !props.href.startsWith('//'))
 </script>
 
 <template>
   <component
-    :is="href ? 'a' : 'button'"
-    :href="href"
+    :is="isInternalRoute ? NuxtLink : href ? 'a' : 'button'"
+    :href="isInternalRoute ? undefined : href"
+    :to="isInternalRoute ? href : undefined"
     :type="href ? undefined : 'button'"
     class="base-button"
     :class="`base-button--${variant}`"
