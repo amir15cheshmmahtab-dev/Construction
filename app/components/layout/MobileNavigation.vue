@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { House, ShoppingCart, ClipboardList, LayoutGrid } from 'lucide-vue-next'
-import { useUiStore } from '~/stores/ui'
-const ui = useUiStore()
+const { cart, showCart } = useDemoCartNotice()
 const route = useRoute()
 const isHome = computed(() => route.path === '/')
 const destination = (section: string) =>
@@ -46,8 +45,12 @@ onBeforeUnmount(() => observer?.disconnect())
       :aria-current="isHome && activeSection === 'home' ? 'page' : undefined"
       @click="activeSection = 'home'"
       ><House :size="22" :stroke-width="1.5" /><span>خانه</span></NuxtLink
-    ><button type="button" @click="ui.notify('سبد خرید در مرحله بعد فعال می‌شود.')">
-      <ShoppingCart :size="22" :stroke-width="1.5" /><span>سبد خرید</span></button
+    ><button type="button" @click="showCart">
+      <ShoppingCart :size="22" :stroke-width="1.5" /><span
+        >سبد خرید<span v-if="cart.itemCount">
+          ({{ cart.itemCount.toLocaleString('fa-IR') }})</span
+        ></span
+      ></button
     ><NuxtLink
       :to="destination('#projects')"
       :class="{ active: isHome && activeSection === 'projects' }"
