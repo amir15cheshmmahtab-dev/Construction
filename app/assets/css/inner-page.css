@@ -1,0 +1,45 @@
+/* Shared inner-page header; homepage remains unchanged. */
+.site-shell--inner .site-header {
+  position: relative;
+  background: #f7f6f2f5;
+  border-block-end: 1px solid var(--color-border);
+}
+.site-shell--inner .header-actions,
+.site-shell--inner .location-button--dark {
+  color: var(--color-charcoal);
+}
+.site-shell--inner .location-button--dark svg:first-child {
+  color: var(--color-bronze-action);
+}
+.site-shell--inner .header-divider {
+  background: #a9987d40;
+}
+.site-shell--inner .desktop-navigation a[aria-current='page'] {
+  color: #795532;
+}
+.site-shell--inner .desktop-navigation a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.demo-cart-button {
+  position: relative;
+}
+.demo-cart-count {
+  position: absolute;
+  inset-block-start: -4px;
+  inset-inline-end: -5px;
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding-inline: 3px;
+  background: var(--color-bronze-action);
+  color: white;
+  font-size: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--surface-page);
+  line-height: 1;
+}
+.site-shell .site-header--menu-open {
+  z-index: 60;
+}

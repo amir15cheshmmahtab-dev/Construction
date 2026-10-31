@@ -1,25 +1,4 @@
 /* Catalog-only surfaces. Shared homepage styles remain the source of truth. */
-.site-shell--inner .site-header {
-  position: relative;
-  background: #f7f6f2f5;
-  border-block-end: 1px solid var(--color-border);
-}
-.site-shell--inner .header-actions,
-.site-shell--inner .location-button--dark {
-  color: var(--color-charcoal);
-}
-.site-shell--inner .location-button--dark svg:first-child {
-  color: var(--color-bronze-action);
-}
-.site-shell--inner .header-divider {
-  background: #a9987d40;
-}
-.site-shell--inner .desktop-navigation a[aria-current='page'] {
-  color: #795532;
-}
-.site-shell--inner .desktop-navigation a[aria-current='page']::after {
-  transform: scaleX(1);
-}
 .catalog-container {
   width: min(calc(100% - clamp(48px, 6vw, 96px)), 1600px);
   margin-inline: auto;
