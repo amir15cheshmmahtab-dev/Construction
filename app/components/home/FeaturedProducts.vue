@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeft, ArrowRight } from 'lucide-vue-next'
 import type { Product } from '~/types/home'
-import { useUiStore } from '~/stores/ui'
 defineProps<{ products: Product[] }>()
-const ui = useUiStore()
 const expanded = ref(false)
 const track = ref<HTMLElement | null>(null)
 const move = (direction: number) =>
@@ -24,11 +22,7 @@ const move = (direction: number) =>
       title="محصولات منتخب"
       description="گزیده‌ای از مصالح و تجهیزات، برای ساختن فضاهایی ماندگار."
     >
-      <UiBaseButton
-        variant="dark"
-        @click="ui.notify('فهرست کامل محصولات در مرحله بعد در دسترس قرار می‌گیرد.')"
-        >مشاهده همه محصولات</UiBaseButton
-      >
+      <UiBaseButton variant="dark" href="/products">مشاهده همه محصولات</UiBaseButton>
     </UiSectionHeading>
     <button
       class="mobile-section-link"
