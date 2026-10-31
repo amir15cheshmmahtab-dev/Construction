@@ -4,13 +4,13 @@ defineProps<{ light?: boolean; small?: boolean }>()
 </script>
 
 <template>
-  <a
+  <NuxtLink
     class="brand"
     :class="{ 'brand--light': light, 'brand--small': small }"
-    href="#"
+    to="/"
     :aria-label="`${brand.name}، صفحه اصلی`"
   >
     <img :src="brand.logo" alt="" width="48" height="52" class="brand-mark" />
     <span>{{ brand.name }}</span>
-  </a>
+  </NuxtLink>
 </template>
