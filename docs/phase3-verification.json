@@ -1,0 +1,269 @@
+{
+  "phase": 3,
+  "date": "2026-10-31",
+  "runtime": "Node 24.14.0",
+  "route": "/products",
+  "previewOrigin": "http://localhost:3003",
+  "scope": {
+    "catalogProducts": 48,
+    "mainCategories": 7,
+    "pageSizes": [12, 24, 48],
+    "newRoutes": ["/products"],
+    "newDependencies": 0,
+    "homepageCssAndFixturesChanged": false,
+    "backendImplemented": false,
+    "productDetailsImplemented": false
+  },
+  "checks": {
+    "typecheck": "passed",
+    "eslint": "passed",
+    "productionBuild": "passed",
+    "catalogTests": {
+      "passed": 24,
+      "failed": 0,
+      "command": "npm run test:catalog",
+      "coverage": "18 data/filter/query tests plus 6 tests executing the production composable with Vue reactivity and Vue Router memory history"
+    },
+    "browserConsole": {
+      "errors": 0,
+      "warnings": 0,
+      "includesHydrationWarnings": true
+    },
+    "prettier": "passed"
+  },
+  "httpSmoke": {
+    "routes": [
+      "/",
+      "/products",
+      "/products?category=rebar",
+      "/products?category=tiles&sort=price-asc",
+      "/products?page=999&availability=available",
+      "/products?search=zzzz-no-product"
+    ],
+    "allStatus": 200,
+    "singleH1": true,
+    "persianRtl": true,
+    "listingCanonical": "/products on request origin",
+    "uniqueProductImageRequests": 28,
+    "allWebpImagesStatus": 200
+  },
+  "images": {
+    "reusedProductFamilies": 5,
+    "newProductFamilies": 9,
+    "newResponsiveWebpFiles": 18,
+    "newBytes": 355402,
+    "newWidths": [320, 640],
+    "exactBrandedModelPhotographs": false
+  },
+  "browserScenarios": [
+    {
+      "case": "Rapid consecutive price + availability changes",
+      "result": "Both min=100000 and availability=available retained; 17 matches"
+    },
+    {
+      "case": "Focused price field after Back",
+      "result": "Minimum restored from 200000 to Persian-formatted 100000 while input retained focus"
+    },
+    {
+      "case": "Brand across category changes",
+      "result": "Bosch remains checked and removable after selecting stone; removing returns 8 category matches"
+    },
+    {
+      "case": "Cement technical fields",
+      "result": "Only fixture cement type and packaging weights displayed"
+    },
+    {
+      "case": "Rebar combined drawer filters",
+      "result": "Rebar / diameter 16 / 38000–39000 toman / available yields one product"
+    },
+    {
+      "case": "Ceramic finish",
+      "result": "Ceramic + matte yields two products"
+    },
+    {
+      "case": "Tools power source",
+      "result": "Cordless power tools yields four products"
+    },
+    {
+      "case": "Direct alias, page clamp, reload",
+      "result": "category=tiles canonicalized to stone/ceramic; page=999 removed after clamp; state restored after reload"
+    },
+    {
+      "case": "Sorts",
+      "result": {
+        "recommended": "سیمان پرتلند تیپ ۲",
+        "newest": "چراغ آویز مشکی تکی",
+        "price-asc": "آجر نمای قرمز",
+        "price-desc": "درب چوبی لولایی عریض",
+        "name": "آجر نمای قرمز"
+      }
+    },
+    {
+      "case": "Pagination",
+      "result": "Page 2 renders a different actual slice of 12 while preserving price-asc and available; pageSize=24 resets page 1 and renders 24"
+    },
+    {
+      "case": "Persian/Arabic normalized search",
+      "result": "ميلگرد ١٦ with availability and sorting yields the 16mm rebar"
+    },
+    {
+      "case": "Mobile draft Apply",
+      "result": "Draft category/specification/price/stock leave URL unchanged until Apply; Apply commits all and closes"
+    },
+    {
+      "case": "Mobile invalid price",
+      "result": "50000 minimum / 39000 maximum produces inline validation and blocks Apply; correction permits Apply"
+    },
+    {
+      "case": "Mobile reset, Escape and focus",
+      "result": "Reset affects draft only; Escape discards reset and preserves applied query; scroll styles restored and focus returns to filter trigger"
+    },
+    {
+      "case": "Empty search",
+      "result": "Persian empty state displayed for unmatched search; reset restores all 48"
+    },
+    {
+      "case": "Favorites / stock / cart",
+      "result": "Selected favorite is pressed with rgb(220,38,38); unavailable CTAs disabled; available cart and inquiry actions give honest future-function notices"
+    },
+    {
+      "case": "Homepage regression",
+      "result": "Homepage retains original H1, five fixtures and default card variant; mobile expansion still displays five; logo returns home; mobile menu and featured desktop CTA reach /products; active header link correct"
+    },
+    {
+      "case": "Drawer resized from mobile to desktop before closing",
+      "result": "Dialog closes, scroll restores and focus moves to results heading because mobile trigger is hidden; verified on final production build"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 1425,
+      "clipped": [],
+      "columns": 4,
+      "documentWidth": 1425,
+      "mobileFilter": "none",
+      "searchFont": "14px",
+      "sidebar": "block",
+      "sortFont": "12px",
+      "viewport": 1440,
+      "visibleCards": 12,
+      "framesReviewed": 3,
+      "proofs": ["previews/phase3-products-1440-top.webp", "previews/phase3-products-1440-end.webp"]
+    },
+    {
+      "width": 1280,
+      "height": 1000,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 1265,
+      "clipped": [],
+      "columns": 3,
+      "documentWidth": 1265,
+      "mobileFilter": "none",
+      "searchFont": "14px",
+      "sidebar": "block",
+      "sortFont": "12px",
+      "viewport": 1280,
+      "visibleCards": 12,
+      "framesReviewed": 4,
+      "proofs": ["previews/phase3-products-1280-top.webp", "previews/phase3-products-1280-end.webp"]
+    },
+    {
+      "width": 1024,
+      "height": 1000,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 1009,
+      "clipped": [],
+      "columns": 3,
+      "documentWidth": 1009,
+      "mobileFilter": "none",
+      "searchFont": "14px",
+      "sidebar": "block",
+      "sortFont": "12px",
+      "viewport": 1024,
+      "visibleCards": 12,
+      "framesReviewed": 4,
+      "proofs": ["previews/phase3-products-1024-top.webp", "previews/phase3-products-1024-end.webp"]
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 753,
+      "clipped": [],
+      "columns": 3,
+      "documentWidth": 753,
+      "mobileFilter": "flex",
+      "searchFont": "14px",
+      "sidebar": "none",
+      "sortFont": "12px",
+      "viewport": 768,
+      "visibleCards": 12,
+      "framesReviewed": 4,
+      "proofs": [
+        "previews/phase3-products-768-top.webp",
+        "previews/phase3-products-768-end.webp",
+        "previews/phase3-products-768.webp"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 415,
+      "clipped": [],
+      "columns": 2,
+      "documentWidth": 415,
+      "mobileFilter": "flex",
+      "searchFont": "16px",
+      "sidebar": "none",
+      "sortFont": "16px",
+      "viewport": 430,
+      "visibleCards": 12,
+      "framesReviewed": 5,
+      "proofs": [
+        "previews/phase3-products-430-top.webp",
+        "previews/phase3-products-430-end.webp",
+        "previews/phase3-products-430.webp"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "brokenImages": [],
+      "cards": 12,
+      "clientWidth": 375,
+      "clipped": [],
+      "columns": 2,
+      "documentWidth": 375,
+      "mobileFilter": "flex",
+      "searchFont": "16px",
+      "sidebar": "none",
+      "sortFont": "16px",
+      "viewport": 390,
+      "visibleCards": 12,
+      "framesReviewed": 5,
+      "proofs": [
+        "previews/phase3-products-390-top.webp",
+        "previews/phase3-products-390-end.webp",
+        "previews/phase3-products-390.webp"
+      ]
+    }
+  ],
+  "captureMethod": "Actual in-app-browser viewport screenshots. Top/end proofs preserve each viewport. Tablet/mobile full-page previews stitch sequential viewport frames at measured scroll positions; repeated fixed bottom navigation is excluded except on the final frame. No full-page desktop stitch because its filter sidebar is sticky.",
+  "limitations": [
+    "All prices, stock and generic technical variations are illustrative fixture data.",
+    "Brand identities and stated model facts are verified in catalog-data.md, but generic images are not exact model photography.",
+    "Cart, inquiry, account and business requests remain explicit temporary notices.",
+    "Favorites remain client session-memory UI state.",
+    "No backend, database, product/category details, checkout, authentication or supplier/admin dashboards were added."
+  ],
+  "browserCaptureDate": "2026-10-30"
+}
