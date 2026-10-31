@@ -4,6 +4,9 @@ import { navigation } from '~/data/home'
 import { useUiStore } from '~/stores/ui'
 
 const ui = useUiStore()
+const route = useRoute()
+const destination = (href: string) =>
+  href.startsWith('#') && route.path !== '/' ? `/${href}` : href
 const drawer = ref<HTMLElement | null>(null)
 const menuButton = ref<HTMLButtonElement | null>(null)
 const feature = (label: string) => ui.notify(`بخش «${label}» در مرحله بعد در دسترس قرار می‌گیرد.`)
@@ -11,7 +14,7 @@ const isSection = (href: string) =>
   ['#products', '#projects', '#business', '#categories', '#about', '#contact'].includes(href)
 const navigate = (event: Event, href: string, label: string) => {
   closeDrawer()
-  if (!isSection(href)) {
+  if (href !== '/products' && !isSection(href)) {
     event.preventDefault()
     feature(label)
   }
@@ -59,7 +62,10 @@ onBeforeUnmount(() => {
         <a
           v-for="item in navigation"
           :key="item.label"
-          :href="item.href"
+          :href="destination(item.href)"
+          :aria-current="
+            item.href === '/products' && route.path === '/products' ? 'page' : undefined
+          "
           @click="navigate($event, item.href, item.label)"
           >{{ item.label }}</a
         >
@@ -123,7 +129,10 @@ onBeforeUnmount(() => {
             <a
               v-for="item in navigation"
               :key="item.label"
-              :href="item.href"
+              :href="destination(item.href)"
+              :aria-current="
+                item.href === '/products' && route.path === '/products' ? 'page' : undefined
+              "
               @click="navigate($event, item.href, item.label)"
               ><span>{{ item.label }}</span
               ><ArrowUpLeft :size="18" :stroke-width="1.3"

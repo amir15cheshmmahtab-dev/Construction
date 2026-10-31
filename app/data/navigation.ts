@@ -1,7 +1,7 @@
 import type { NavigationItem } from '~/types/marketplace'
 
 export const navigation: NavigationItem[] = [
-  { label: 'محصولات', href: '#products' },
+  { label: 'محصولات', href: '/products' },
   { label: 'خرید بر اساس پروژه', href: '#projects' },
   { label: 'برندها', href: '#brands' },
   { label: 'مجله', href: '#journal' },
