@@ -1,6 +1,6 @@
 # سیوان — Construction materials marketplace
 
-A Persian, RTL, server-rendered Nuxt 4 homepage for a premium construction materials marketplace. This is **phase 1: frontend foundation and homepage only**. The working name and tagline live in `app/data/brand.ts`; the logo is a reusable presentation component.
+A Persian, RTL, server-rendered Nuxt 4 frontend for a premium construction materials marketplace. Phases 1–3 cover the homepage, its visual refinement and the complete **`/products` discovery page**. The working name and tagline live in `app/data/brand.ts`; the logo is a reusable presentation component.
 
 ## Run locally
 
@@ -17,6 +17,7 @@ Open the local address printed by Nuxt (normally `http://localhost:3000`).
 npm run typecheck
 npm run lint
 npm run format:check
+npm run test:catalog
 npm run build
 npm run preview
 ```
@@ -41,16 +42,22 @@ app/
   assets/css/                     theme tokens, typography, reduced motion
   components/
     home/                         feature sections and product cards
+    products/                     catalog search, filters, grid and pagination
     layout/                       header, footer and mobile navigation
     shared/                       reusable brand, search and feedback
     ui/                           small presentation primitives
   composables/useHomepageData.ts  query boundary and SSR prefetch
-  data/                          separate typed homepage fixtures
+  composables/useProductCatalog.ts applied catalog state and URL synchronization
+  data/                          separate typed homepage and catalog fixtures
   layouts/default.vue            shared page frame
   pages/index.vue                homepage composition and page metadata
+  pages/products/index.vue       product discovery, SEO and responsive composition
   repositories/homepage.ts       mock adapter behind repository interface
+  repositories/catalog.ts        copied local catalog behind a repository boundary
   stores/ui.ts                   request-safe Pinia UI state
   types/marketplace.ts           domain and presentation data contracts
+  types/catalog.ts               listing, filtering and taxonomy contracts
+  utils/catalog.ts               normalized search, filters, sorting and query codecs
   utils/format.ts                Persian number and toman formatting
 public/
   fonts/                         local Vazirmatn variable font and OFL
@@ -64,6 +71,10 @@ The repository returns copied fixtures without making network requests or introd
 
 Pinia's official Nuxt module serializes and hydrates UI state. `useUiStore()` holds menu visibility, Tehran location preference, individual/business preference, local visual favorites and temporary feedback. It implements no purchasing logic and stores no server data. Preferences are session-memory state; no persistent storage is added in this phase.
 
+The catalog uses synchronous local repository data and a page-local composable, without artificial API requests or additional query/store state. Its 48 products extend the existing `Product` contract; the five homepage fixtures remain separate. Applied filters, search, sorting, page and page size serialize to a canonical URL. Optimistic applied state preserves rapid consecutive actions before navigation settles; browser Back/Forward restores the URL state. Only applied mobile drawer values enter that URL. See [catalog data and filtering](docs/catalog-data.md) for taxonomy, verified brand sources and mock-data limits.
+
+New listing components live in `app/components/products`: `ProductListingHeader`, `ProductCategoryNav`, `ProductFilterFields`, `ProductFilterSidebar`, `ProductFilterDrawer`, `ActiveFilterChips`, `ProductListingToolbar`, `ProductGrid`, `ProductPagination` and `ProductEmptyState`. The existing homepage `ProductCard` gains an optional catalog variant; its default presentation stays intact. Shared modifications are limited to the route-aware header/navigation, home logo links, featured-products listing link and inner-page layout class.
+
 ## Persian content, currency and imagery
 
 The document uses `lang="fa"` and `dir="rtl"`, local Persian typography, logical spacing and safe-area padding for mobile navigation. English labels and product model names should use appropriate direction handling when mixed with Persian text.
@@ -75,6 +86,8 @@ The local variable font is [Vazirmatn v33.003](https://github.com/rastikerdar/va
 The **18 active homepage photographs** were generated separately with the built-in ImageGen tool: one residence hero, seven categories, four project interiors/exteriors, five isolated products and one architectural material-showroom consultation. The **43 local WebP files**, including responsive variants and five retained variants of the previous commercial-building and handshake images, occupy approximately **2.64 MB** in `public/images/{hero,categories,projects,products,business}`. Hero variants are 640/960/1920 px wide; categories and products 320/640; projects 480/900; the active showroom image 640/960/1920. The hero has loading priority; below-fold images load lazily and use width-aware `srcset`/`sizes`.
 
 Exact final prompts, original generation provenance, asset dimensions and individual sizes are recorded in [architecture image prompts](docs/image-prompts-architecture.md), [catalog image prompts](docs/image-prompts-catalog.md) and [the partnership banner prompt](docs/image-prompts-partnership.md). No required generation assets remain outstanding. The supplied desktop/mobile reference screenshots were used only as design references.
+
+Phase 3 reuses the five existing product photographs and adds nine independent product packshots in `public/images/catalog`: sand, blocks, steel profiles, stone slabs, a sink, lighting, a door, a window and a drill. Each has 640px and 320px WebP variants; the 18 new files total 355,402 bytes. The [listing image prompts](docs/catalog-image-prompts.md) record their generation provenance. Generic photographs illustrate product families; they are not exact branded-model photographs.
 
 ## Design system and responsive composition
 
@@ -94,9 +107,11 @@ Replace the working name, tagline and `logo` path in `app/data/brand.ts`; the SV
 
 The homepage presents seven material categories, four project ideas, five featured products, an architectural hero, a business section and planned service highlights. Mobile gets an actual responsive website, with no fake device bezel or status bar. Interactive controls include mobile navigation, search UI, local favorite toggles, location UI, and honest placeholder feedback for future capabilities.
 
+The `/products` route reuses the shared header, footer, mobile navigation and `HomeProductCard` through an explicit catalog variant. It adds category/subcategory selection, normalized Persian/Arabic search, toman price bounds, actual product brands, availability and category-aware technical filters. Groups combine with AND and multiple values within one group use OR. Five sorts operate on the real fixture collection; pagination supports 12, 24 or 48 products. The mobile native dialog holds an isolated draft, validates price input, locks background scroll and restores focus on close. Catalog styles are isolated in `app/assets/css/catalog.css`; homepage CSS, fixtures and visual composition remain unchanged. Existing product navigation and the featured-products desktop link now reach the listing.
+
 **Intentionally unimplemented:** backend/database/API endpoints, authentication, actual cart/checkout/payment, product/category detail pages, project questionnaire, customer/supplier/admin/B2B dashboards, inventory, orders, delivery calculations, commissions, supplier settlements, and live support. Business content is a preview of planned services. Future buttons must never suggest that a real order or business request was submitted.
 
-Do not publish fake contact details, manufacturer claims, endorsements, statistics or certifications. Configure a real public origin and verify commercial/legal copy before adding canonical absolute URLs, production social links or operational claims.
+Do not publish fake contact details, manufacturer claims, endorsements, statistics or certifications. Configure a real public origin and verify the listing canonical URL, commercial/legal copy and production social links before deployment or operational claims.
 
 ## Verification
 
@@ -119,6 +134,10 @@ The final production-browser result snapshot is saved in [verification.json](doc
 The updated partnership banner was checked at 320, 390, 768, 1024, 1440 and 1908 px, including left copy alignment, both action labels/notices and image framing. The [partnership verification snapshot](docs/business-partnership-verification.json), [desktop banner](docs/previews/business-partnership.webp) and [mobile banner](docs/previews/business-partnership-mobile.webp) record that pass.
 
 Phase 2 was verified against the production build in the in-app browser at **320, 390, 430, 768, 1024, 1440 and 1908 px**. All widths had no document overflow, clipped category/product/service labels or hero CTA/search overlap. Favorites, mobile product expansion, menu Escape/focus return, location selection, search results/empty state, cart feedback and both partnership notices were exercised. TypeScript, ESLint, Prettier and the production build passed. The [Phase 2 verification record](docs/phase2-verification.json) records the final measurements. Current [desktop](docs/previews/phase2-home-1440.webp), [390px mobile](docs/previews/phase2-home-390.webp), [430px mobile](docs/previews/phase2-home-430.webp) and [tablet](docs/previews/phase2-home-768.webp) captures were reviewed from top to bottom. These full-page previews combine sequential browser viewport screenshots at their measured scroll positions; earlier preview files remain historical records.
+
+Phase 3 adds **24 passing catalog tests**, including six tests executing the production composable with Vue reactivity and a real Vue Router memory history. They cover rapid consecutive actions, search debounce, Back/Forward, navigation cancellation, canonical URLs, combined filters, sorting and pagination. The harness supplies Nuxt auto-import/lifecycle wiring and uses Node's built-in TypeScript stripping; Node 24.14 emits its expected experimental API warning. TypeScript, ESLint and the production build pass. Production HTTP smoke checks returned 200 for the homepage and five listing states, with one H1, Persian RTL markup and the expected canonical; all 28 unique product image/variant URLs returned WebP successfully.
+
+The actual production listing was reviewed at **1440, 1280, 1024, 768, 430 and 390 px**, with no document overflow, clipped card information or broken images. Desktop, mobile draft/apply/cancel, invalid prices, technical filters, normalized search, all five sorts, pagination, favorites and honest cart notices were exercised. The homepage retains its original five fixtures and appearance; its mobile expansion and links into the new route were checked. See the [Phase 3 verification record](docs/phase3-verification.json), [desktop viewport](docs/previews/phase3-products-1440-top.webp), [mobile listing](docs/previews/phase3-products-390.webp), [tablet listing](docs/previews/phase3-products-768.webp), [mobile filters](docs/previews/phase3-products-drawer-390.webp) and [empty state](docs/previews/phase3-products-empty-390.webp). Tablet/mobile full-page captures combine measured viewport frames; desktop proofs remain separate viewport captures because the sidebar is sticky.
 
 The initial `npm audit` on 2026-10-30 reported **8 affected dependency entries: 5 low and 3 moderate; no high or critical findings**. Nuxt 4.5.2 is affected by advisories around case-variant route rules, server-island `useHeadSafe` sanitization, and a `NuxtLink` edge case when pages are disabled. This phase uses none of those affected configurations: it defines no route rules or server islands, leaves pages enabled, and uses no user-provided link destinations. Remaining low findings include transitive `deepmerge` and a development-only esbuild issue on Windows. These limitations still need upstream dependency updates before production hardening; they are not a clean audit.
 
