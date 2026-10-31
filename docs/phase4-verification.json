@@ -1,0 +1,353 @@
+{
+  "phase": 4,
+  "date": "2026-10-31",
+  "runtime": "Node 24.14.0",
+  "route": "/products/[slug]",
+  "previewOrigin": "http://localhost:3007",
+  "scope": {
+    "dynamicTemplate": 1,
+    "existingCatalogProducts": 48,
+    "newProductDatabase": false,
+    "newImageAssets": 0,
+    "newDependencies": 0,
+    "homeFixturesChanged": false,
+    "homeMainCssChanged": false,
+    "backendImplemented": false,
+    "checkoutImplemented": false
+  },
+  "components": {
+    "new": [
+      "ProductGallery",
+      "ProductSpecifications",
+      "ProductInformationSections",
+      "ProductQuantitySelector",
+      "ProductPurchasePanel",
+      "ProductPurchaseBar"
+    ],
+    "reused": [
+      "AppHeader",
+      "AppFooter",
+      "BrandLogo",
+      "LocationPicker",
+      "ToastMessage",
+      "ProductCard",
+      "ProductGrid"
+    ]
+  },
+  "domain": {
+    "detailModel": "Derived ProductDetail adapter over unchanged CatalogProduct records",
+    "specifications": "Existing nonempty values grouped by category; no invented grade, warranty, origin or certification",
+    "variants": {
+      "rebarDiameter": 6,
+      "concreteBlockWidth": 2,
+      "otherProducts": "No arbitrary variant selector"
+    },
+    "quantity": "Persian/Arabic digits, integer-scaled half-unit steps for fractional units; explicit demonstration minimum/step/cap",
+    "cart": "Local request-safe Pinia state, canonical selected SKU merging, price/availability/quantity checks; header count is distinct SKU lines"
+  },
+  "checks": {
+    "typecheck": "passed",
+    "eslint": "passed",
+    "prettier": "passed",
+    "productionBuild": "passed",
+    "buildDiagnostic": "Rolldown PLUGIN_TIMINGS informational diagnostic; build exit code 0",
+    "automatedTests": {
+      "passed": 46,
+      "failed": 0,
+      "command": "npm test"
+    },
+    "freshProductionBrowserConsole": {
+      "errors": 0,
+      "warnings": 0,
+      "hydrationWarnings": 0
+    }
+  },
+  "httpSmoke": {
+    "validProductPages": 48,
+    "validStatus": 200,
+    "invalidSlugs": 3,
+    "invalidStatus": 404,
+    "productSpecificTitleDescriptionCanonicalOpenGraph": true,
+    "singleH1": true,
+    "persianRtl": true,
+    "breadcrumbJsonLd": true,
+    "homeStatus": 200,
+    "filteredListingStatus": 200,
+    "htmlRequestsUseAcceptTextHtml": true
+  },
+  "browserScenarios": [
+    {
+      "case": "Product selection and listing context",
+      "result": "Filtered rebar listing links to exact SKU; from query retains category and sort; return link restores eight matches and the original query; browser Back returns the product"
+    },
+    {
+      "case": "Rebar option selection",
+      "result": "16→18 updates title, price 38200 toman, code, canonical and specifications; quantity resets to valid minimum"
+    },
+    {
+      "case": "Variant navigation focus and scroll",
+      "result": "On final mobile build selecting18 retains controls at viewport top317px, scrollY501 and focus on selected18 button instead of jumping to gallery"
+    },
+    {
+      "case": "Fractional quantity and local cart",
+      "result": "Increment from1 to1.5kg produces a local selected-SKU cart line; header shows1 distinct product; no real order is claimed"
+    },
+    {
+      "case": "Invalid quantity",
+      "result": "1.2kg rejected as off-step, inline message shown and purchase disabled"
+    },
+    {
+      "case": "Availability and inquiry",
+      "result": "Rebar12 unavailable disables purchase; rebar20 null price shows inquiry notice and leaves basket count unchanged"
+    },
+    {
+      "case": "Gallery and focus",
+      "result": "One actual image, no artificial thumbnails; native dialog opens,125% zoom creates scrollable canvas, Escape closes, restores focus and exact body overflow"
+    },
+    {
+      "case": "Information navigation",
+      "result": "Desktop tab click/RTL ArrowLeft updates active panel; mobile native specifications/delivery accordions expand and display actual category values"
+    },
+    {
+      "case": "Brand transparency",
+      "result": "Bosch brand andGSB18V50 code displayed; no manufacturer, origin or warranty claims invented"
+    },
+    {
+      "case": "Delivery",
+      "result": "Existing Tehran selector opens and accepts city; copy gives neutral confirmation-dependent delivery information without dates/prices"
+    },
+    {
+      "case": "Related products",
+      "result": "Rebar links to actual steel profile; current SKU excluded; same category and complementary subcategories used"
+    },
+    {
+      "case": "Mobile purchase bar and menu",
+      "result": "Purchase bar replaces bottom navigation;112px page padding; toast bottom728 stays above bar top756; menu header z60 ensures drawer covers bar"
+    },
+    {
+      "case": "Homepage regression",
+      "result": "Original H1/five cards retained; expansion displays5; canonical favorite and local basket remain across SPA home/listing/detail navigation; original mobile navigation returns onhome"
+    },
+    {
+      "case": "404 recovery",
+      "result": "Unknown slug displays Persian404 and no product; noindex/nofollow present; Browse Products clears error and opens listing"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "barVisible": false,
+      "bodyBottomPadding": "0px",
+      "bottomNavigationCount": 0,
+      "brokenImages": [],
+      "clientWidth": 1425,
+      "clipped": [],
+      "documentWidth": 1425,
+      "galleryRightOfInfo": true,
+      "relatedCards": 4,
+      "viewport": 1440,
+      "framesReviewed": 3,
+      "proofs": ["previews/phase4-product-1440-top.webp", "previews/phase4-product-1440-end.webp"]
+    },
+    {
+      "width": 1280,
+      "height": 1000,
+      "barVisible": false,
+      "bodyBottomPadding": "0px",
+      "bottomNavigationCount": 0,
+      "brokenImages": [],
+      "clientWidth": 1265,
+      "clipped": [],
+      "documentWidth": 1265,
+      "galleryRightOfInfo": true,
+      "relatedCards": 4,
+      "viewport": 1280,
+      "framesReviewed": 3,
+      "proofs": ["previews/phase4-product-1280-top.webp", "previews/phase4-product-1280-end.webp"]
+    },
+    {
+      "width": 768,
+      "height": 844,
+      "barVisible": false,
+      "bodyBottomPadding": "0px",
+      "bottomNavigationCount": 0,
+      "brokenImages": [],
+      "clientWidth": 753,
+      "clipped": [],
+      "documentWidth": 753,
+      "galleryRightOfInfo": true,
+      "relatedCards": 4,
+      "viewport": 768,
+      "framesReviewed": 5,
+      "proofs": [
+        "previews/phase4-product-768-top.webp",
+        "previews/phase4-product-768-end.webp",
+        "previews/phase4-product-768.webp"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 844,
+      "barVisible": true,
+      "bodyBottomPadding": "112px",
+      "bottomNavigationCount": 0,
+      "brokenImages": [],
+      "clientWidth": 415,
+      "clipped": [],
+      "documentWidth": 415,
+      "galleryRightOfInfo": false,
+      "relatedCards": 4,
+      "viewport": 430,
+      "framesReviewed": 5,
+      "proofs": [
+        "previews/phase4-product-430-top.webp",
+        "previews/phase4-product-430-end.webp",
+        "previews/phase4-product-430.webp"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "barVisible": true,
+      "bodyBottomPadding": "112px",
+      "bottomNavigationCount": 0,
+      "brokenImages": [],
+      "clientWidth": 375,
+      "clipped": [],
+      "documentWidth": 375,
+      "galleryRightOfInfo": false,
+      "relatedCards": 4,
+      "viewport": 390,
+      "framesReviewed": 5,
+      "proofs": [
+        "previews/phase4-product-390-top.webp",
+        "previews/phase4-product-390-end.webp",
+        "previews/phase4-product-390.webp"
+      ]
+    }
+  ],
+  "additionalCategoryChecks": [
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/rebar-16",
+      "variants": 6,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/block-concrete-15",
+      "variants": 2,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/ceramic-travertine-60",
+      "variants": 0,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/faucet-bronze-basin",
+      "variants": 0,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/drill-bosch-gsb18v50",
+      "variants": 0,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/door-wood-single",
+      "variants": 0,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/pendant-black-single",
+      "variants": 0,
+      "width": 1440
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/rebar-16",
+      "variants": 6,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/block-concrete-15",
+      "variants": 2,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/ceramic-travertine-60",
+      "variants": 0,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/faucet-bronze-basin",
+      "variants": 0,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/drill-bosch-gsb18v50",
+      "variants": 0,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/door-wood-single",
+      "variants": 0,
+      "width": 390
+    },
+    {
+      "clipped": [],
+      "images": 1,
+      "overflow": false,
+      "url": "/products/pendant-black-single",
+      "variants": 0,
+      "width": 390
+    }
+  ],
+  "captureMethod": "Actual production in-app-browser viewport screenshots. Desktop top/end remain separate because gallery is sticky. Tablet/mobile full-page previews stitch sequential frames at measured scroll positions, excluding repeated fixed purchase bar except on final frame. No UI artwork synthesized.",
+  "environmentNote": "An earlier preview tab logged NUXT_E5002 after rebuilding replaced its old manifest. A fresh server/tab against the final unchanged output was verified with no console errors or warnings.",
+  "limitations": [
+    "Data, stock, prices and quantity rules remain demonstration fixtures.",
+    "Current products each have one existing category image; branded models are not exact model photographs.",
+    "Variants exist only for explicitly related existing rebar/block SKU records.",
+    "Basket is session-memory UI state with no persistence, checkout, payment, orders or stock reservation.",
+    "Price inquiry and delivery confirmation remain honest temporary UI feedback."
+  ]
+}
