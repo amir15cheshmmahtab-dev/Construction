@@ -15,7 +15,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test:catalog": "node --test --test-isolation=none tests/catalog.test.mjs tests/catalog-routing.test.mjs"
+    "test:catalog": "node --test --test-isolation=none tests/catalog.test.mjs tests/catalog-routing.test.mjs",
+    "test:products": "node --test --test-isolation=none tests/product-detail.test.mjs tests/cart.test.mjs tests/product-navigation.test.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.mjs"
   },
   "dependencies": {
     "@peterbud/nuxt-query": "1.12.0",
