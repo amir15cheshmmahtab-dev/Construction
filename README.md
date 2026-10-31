@@ -1,6 +1,6 @@
 # سیوان — Construction materials marketplace
 
-A Persian, RTL, server-rendered Nuxt 4 frontend for a premium construction materials marketplace. Phases 1–3 cover the homepage, its visual refinement and the complete **`/products` discovery page**. The working name and tagline live in `app/data/brand.ts`; the logo is a reusable presentation component.
+A Persian, RTL, server-rendered Nuxt 4 frontend for a premium construction materials marketplace. Phases 1–4 cover the homepage, its visual refinement, the complete **`/products` discovery page**, and dynamic **`/products/[slug]` product details** with a local demonstration basket. The working name and tagline live in `app/data/brand.ts`; the logo is a reusable presentation component.
 
 ## Run locally
 
@@ -17,12 +17,12 @@ Open the local address printed by Nuxt (normally `http://localhost:3000`).
 npm run typecheck
 npm run lint
 npm run format:check
-npm run test:catalog
+npm test
 npm run build
 npm run preview
 ```
 
-`postinstall` runs `nuxt prepare`, which generates the application TypeScript and ESLint configurations. Commit `package-lock.json` and use `npm ci` for reproducible installs. `npm run format` applies Prettier formatting.
+`postinstall` runs `nuxt prepare`, which generates the application TypeScript and ESLint configurations. Commit `package-lock.json` and use `npm ci` for reproducible installs. `npm run format` applies Prettier formatting. `npm test` runs the full behavior suite; `npm run test:catalog` and `npm run test:products` run the listing and product-detail/cart/navigation subsets.
 
 ## Stack and compatibility
 
@@ -43,22 +43,29 @@ app/
   components/
     home/                         feature sections and product cards
     products/                     catalog search, filters, grid and pagination
+    product-detail/               gallery, information, specifications and purchase UI
     layout/                       header, footer and mobile navigation
     shared/                       reusable brand, search and feedback
     ui/                           small presentation primitives
   composables/useHomepageData.ts  query boundary and SSR prefetch
   composables/useProductCatalog.ts applied catalog state and URL synchronization
+  composables/useDemoCartNotice.ts shared local basket feedback
   data/                          separate typed homepage and catalog fixtures
   layouts/default.vue            shared page frame
   pages/index.vue                homepage composition and page metadata
   pages/products/index.vue       product discovery, SEO and responsive composition
+  pages/products/[slug].vue      dynamic product detail composition and metadata
   repositories/homepage.ts       mock adapter behind repository interface
   repositories/catalog.ts        copied local catalog behind a repository boundary
   stores/ui.ts                   request-safe Pinia UI state
+  stores/cart.ts                 session-local demonstration SKU lines
   types/marketplace.ts           domain and presentation data contracts
   types/catalog.ts               listing, filtering and taxonomy contracts
+  types/product-detail.ts        derived details, variants, quantities and demo cart
   utils/catalog.ts               normalized search, filters, sorting and query codecs
   utils/format.ts                Persian number and toman formatting
+  utils/product-detail.ts        detail adapter, quantity rules and related products
+  utils/product-navigation.ts    canonical card identities and safe listing return URLs
 public/
   fonts/                         local Vazirmatn variable font and OFL
   images/                        independent optimized local assets
@@ -71,9 +78,15 @@ The repository returns copied fixtures without making network requests or introd
 
 Pinia's official Nuxt module serializes and hydrates UI state. `useUiStore()` holds menu visibility, Tehran location preference, individual/business preference, local visual favorites and temporary feedback. It implements no purchasing logic and stores no server data. Preferences are session-memory state; no persistent storage is added in this phase.
 
+`useCartStore()` separately holds an in-session demonstration basket. Adding a priced, non-unavailable SKU validates its selected variant and quantity, merges repeated additions, and updates the shared header/mobile navigation feedback. Its count represents distinct SKU lines, rather than summing incompatible quantities such as bags and square metres. There is no browser persistence, stock reservation or real order processing.
+
 The catalog uses synchronous local repository data and a page-local composable, without artificial API requests or additional query/store state. Its 48 products extend the existing `Product` contract; the five homepage fixtures remain separate. Applied filters, search, sorting, page and page size serialize to a canonical URL. Optimistic applied state preserves rapid consecutive actions before navigation settles; browser Back/Forward restores the URL state. Only applied mobile drawer values enter that URL. See [catalog data and filtering](docs/catalog-data.md) for taxonomy, verified brand sources and mock-data limits.
 
 New listing components live in `app/components/products`: `ProductListingHeader`, `ProductCategoryNav`, `ProductFilterFields`, `ProductFilterSidebar`, `ProductFilterDrawer`, `ActiveFilterChips`, `ProductListingToolbar`, `ProductGrid`, `ProductPagination` and `ProductEmptyState`. The existing homepage `ProductCard` gains an optional catalog variant; its default presentation stays intact. Shared modifications are limited to the route-aware header/navigation, home logo links, featured-products listing link and inner-page layout class.
+
+Phase 4 adds six components in `app/components/product-detail`: `ProductGallery`, `ProductSpecifications`, `ProductInformationSections`, `ProductPurchasePanel`, `ProductQuantitySelector` and `ProductPurchaseBar`. The dynamic route looks up an exact existing catalog slug and returns 404 for an unknown slug. A derived adapter builds descriptions, grouped specifications, quantity rules, images and explicit variants from the same 48 catalog records; it does not introduce a second product database. See [product detail data and local cart](docs/product-detail-data.md) for the contracts and demonstration limits.
+
+Card images and titles navigate to product details. Explicit aliases map the five legacy homepage showcase identities to existing catalog SKUs at the card boundary; they do not make guessed or legacy detail slugs valid. Safe, canonical local listing state is retained in the `from` query when opening a product, selecting a variant or following related products. The return link restores that context. Product-specific canonical and Open Graph URLs exclude the return query.
 
 ## Persian content, currency and imagery
 
@@ -88,6 +101,8 @@ The **18 active homepage photographs** were generated separately with the built-
 Exact final prompts, original generation provenance, asset dimensions and individual sizes are recorded in [architecture image prompts](docs/image-prompts-architecture.md), [catalog image prompts](docs/image-prompts-catalog.md) and [the partnership banner prompt](docs/image-prompts-partnership.md). No required generation assets remain outstanding. The supplied desktop/mobile reference screenshots were used only as design references.
 
 Phase 3 reuses the five existing product photographs and adds nine independent product packshots in `public/images/catalog`: sand, blocks, steel profiles, stone slabs, a sink, lighting, a door, a window and a drill. Each has 640px and 320px WebP variants; the 18 new files total 355,402 bytes. The [listing image prompts](docs/catalog-image-prompts.md) record their generation provenance. Generic photographs illustrate product families; they are not exact branded-model photographs.
+
+Phase 4 reuses those assets without generating new photographs. Every current product has one source image; the gallery deduplicates images, shows thumbnails only when genuine additional images exist, and offers an accessible native-dialog lightbox with zoom and keyboard controls. It does not manufacture extra product angles.
 
 ## Design system and responsive composition
 
@@ -109,9 +124,15 @@ The homepage presents seven material categories, four project ideas, five featur
 
 The `/products` route reuses the shared header, footer, mobile navigation and `HomeProductCard` through an explicit catalog variant. It adds category/subcategory selection, normalized Persian/Arabic search, toman price bounds, actual product brands, availability and category-aware technical filters. Groups combine with AND and multiple values within one group use OR. Five sorts operate on the real fixture collection; pagination supports 12, 24 or 48 products. The mobile native dialog holds an isolated draft, validates price input, locks background scroll and restores focus on close. Catalog styles are isolated in `app/assets/css/catalog.css`; homepage CSS, fixtures and visual composition remain unchanged. Existing product navigation and the featured-products desktop link now reach the listing.
 
-**Intentionally unimplemented:** backend/database/API endpoints, authentication, actual cart/checkout/payment, product/category detail pages, project questionnaire, customer/supplier/admin/B2B dashboards, inventory, orders, delivery calculations, commissions, supplier settlements, and live support. Business content is a preview of planned services. Future buttons must never suggest that a real order or business request was submitted.
+The `/products/[slug]` route supports every existing catalog product through one template. It presents the genuine image, unit of sale, mock price and stock, optional verified product brand, recorded technical values, demonstration quantity rules and same-category related products. Information uses keyboard-accessible desktop tabs and native mobile accordions; the gallery and delivery section reuse the existing design, icons and location preference. The mobile purchase bar respects safe areas and replaces the bottom navigation on detail pages.
 
-Do not publish fake contact details, manufacturer claims, endorsements, statistics or certifications. Configure a real public origin and verify the listing canonical URL, commercial/legal copy and production social links before deployment or operational claims.
+Only two explicit existing SKU families have variant selectors: six rebar diameters and two concrete-block widths. Selecting an option opens its actual SKU, so its price, specifications, quantity unit and stock remain consistent. Other products do not receive invented options. Quantity parsing supports Persian/Arabic input, validates minimum/step/maximum rules and keeps weighted or area quantities separate from integer counts. These rules are explicitly demonstration conditions, not verified supplier order limits.
+
+Priced products can enter the local demonstration basket from cards or detail pages. Unavailable products cannot be added; products without a price provide honest inquiry feedback without sending a request. A local basket confirmation never claims an order was placed. Delivery location follows the existing Tehran preference, while shipping cost, timing and heavy-material transport conditions remain subject to confirmation.
+
+**Intentionally unimplemented:** backend/database/API endpoints, authentication, full cart page, operational cart/checkout/payment, category detail pages, project questionnaire, customer/supplier/admin/B2B dashboards, inventory, orders, delivery calculations, commissions, supplier settlements, and live support. Business content is a preview of planned services. Future buttons must never suggest that a real order or business request was submitted.
+
+Do not publish fake contact details, manufacturer claims, endorsements, statistics or certifications. Configure a real public origin and verify listing/product canonical URLs, commercial/legal copy and production social links before deployment or operational claims.
 
 ## Verification
 
@@ -138,6 +159,10 @@ Phase 2 was verified against the production build in the in-app browser at **320
 Phase 3 adds **24 passing catalog tests**, including six tests executing the production composable with Vue reactivity and a real Vue Router memory history. They cover rapid consecutive actions, search debounce, Back/Forward, navigation cancellation, canonical URLs, combined filters, sorting and pagination. The harness supplies Nuxt auto-import/lifecycle wiring and uses Node's built-in TypeScript stripping; Node 24.14 emits its expected experimental API warning. TypeScript, ESLint and the production build pass. Production HTTP smoke checks returned 200 for the homepage and five listing states, with one H1, Persian RTL markup and the expected canonical; all 28 unique product image/variant URLs returned WebP successfully.
 
 The actual production listing was reviewed at **1440, 1280, 1024, 768, 430 and 390 px**, with no document overflow, clipped card information or broken images. Desktop, mobile draft/apply/cancel, invalid prices, technical filters, normalized search, all five sorts, pagination, favorites and honest cart notices were exercised. The homepage retains its original five fixtures and appearance; its mobile expansion and links into the new route were checked. See the [Phase 3 verification record](docs/phase3-verification.json), [desktop viewport](docs/previews/phase3-products-1440-top.webp), [mobile listing](docs/previews/phase3-products-390.webp), [tablet listing](docs/previews/phase3-products-768.webp), [mobile filters](docs/previews/phase3-products-drawer-390.webp) and [empty state](docs/previews/phase3-products-empty-390.webp). Tablet/mobile full-page captures combine measured viewport frames; desktop proofs remain separate viewport captures because the sidebar is sticky.
+
+Phase 4 passed **46 tests** with `npm test`, strict TypeScript, ESLint, Prettier and the production build. The suite covers exact slug lookup, category-specific specifications, explicit variant families, quantity validation and stepping, safe listing context, related products, cart validation/merging and retaining the purchase controls when switching a variant. The production HTTP check covered **all 48 product routes** (200, product-specific metadata and one H1), **three invalid slugs** (404 with the Persian error page), and the homepage/listing (200). The build emitted a Rolldown plugin timing diagnostic; it completed successfully.
+
+The production page was visually reviewed at **1440, 1280, 768, 430 and 390 px**, with no document overflow, clipped product information or broken images. Additional desktop/mobile checks covered rebar, blocks, ceramic, faucets, tools, doors and lighting. Gallery zoom, Escape/focus/scroll restoration, desktop tabs, mobile accordions, variants, fractional quantities, unavailable/inquiry states, local cart count, city selection, related navigation and listing context restoration were exercised. Homepage cards, expansion and shared favorite/cart state remained functional. See the [Phase 4 verification record](docs/phase4-verification.json), [desktop product viewport](docs/previews/phase4-product-1440-top.webp), [mobile product page](docs/previews/phase4-product-390.webp), [mobile lightbox](docs/previews/phase4-lightbox-390.webp) and [variant selection](docs/previews/phase4-variants-390.webp).
 
 The initial `npm audit` on 2026-10-30 reported **8 affected dependency entries: 5 low and 3 moderate; no high or critical findings**. Nuxt 4.5.2 is affected by advisories around case-variant route rules, server-island `useHeadSafe` sanitization, and a `NuxtLink` edge case when pages are disabled. This phase uses none of those affected configurations: it defines no route rules or server islands, leaves pages enabled, and uses no user-provided link destinations. Remaining low findings include transitive `deepmerge` and a development-only esbuild issue on Windows. These limitations still need upstream dependency updates before production hardening; they are not a clean audit.
 
