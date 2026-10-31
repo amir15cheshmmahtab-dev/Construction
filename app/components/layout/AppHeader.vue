@@ -4,6 +4,7 @@ import { navigation } from '~/data/home'
 import { useUiStore } from '~/stores/ui'
 
 const ui = useUiStore()
+const { cart, showCart } = useDemoCartNotice()
 const route = useRoute()
 const destination = (href: string) =>
   href.startsWith('#') && route.path !== '/' ? `/${href}` : href
@@ -12,8 +13,20 @@ const menuButton = ref<HTMLButtonElement | null>(null)
 const feature = (label: string) => ui.notify(`بخش «${label}» در مرحله بعد در دسترس قرار می‌گیرد.`)
 const isSection = (href: string) =>
   ['#products', '#projects', '#business', '#categories', '#about', '#contact'].includes(href)
-const navigate = (event: Event, href: string, label: string) => {
+const navigate = (event: MouseEvent, href: string, label: string) => {
   closeDrawer()
+  if (
+    (href === '/products' || (isSection(href) && route.path !== '/')) &&
+    !event.ctrlKey &&
+    !event.metaKey &&
+    !event.shiftKey &&
+    !event.altKey &&
+    event.button === 0
+  ) {
+    event.preventDefault()
+    void navigateTo(destination(href))
+    return
+  }
   if (href !== '/products' && !isSection(href)) {
     event.preventDefault()
     feature(label)
@@ -55,7 +68,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <header class="site-header">
+  <header class="site-header" :class="{ 'site-header--menu-open': ui.menuOpen }">
     <div class="header-inner page-container">
       <SharedBrandLogo />
       <nav class="desktop-navigation" aria-label="ناوبری اصلی">
@@ -64,7 +77,7 @@ onBeforeUnmount(() => {
           :key="item.label"
           :href="destination(item.href)"
           :aria-current="
-            item.href === '/products' && route.path === '/products' ? 'page' : undefined
+            item.href === '/products' && route.path.startsWith('/products') ? 'page' : undefined
           "
           @click="navigate($event, item.href, item.label)"
           >{{ item.label }}</a
@@ -83,12 +96,15 @@ onBeforeUnmount(() => {
         </button>
         <span class="header-divider header-divider--last" />
         <button
-          class="icon-button"
+          class="icon-button demo-cart-button"
           type="button"
-          aria-label="سبد خرید"
-          @click="feature('سبد خرید')"
+          :aria-label="cart.itemCount ? `سبد نمونه، ${cart.itemCount} نوع محصول` : 'سبد خرید'"
+          @click="showCart"
         >
           <ShoppingCart :size="21" :stroke-width="1.4" />
+          <span v-if="cart.itemCount" class="demo-cart-count">{{
+            cart.itemCount.toLocaleString('fa-IR')
+          }}</span>
         </button>
         <button
           ref="menuButton"
@@ -131,7 +147,7 @@ onBeforeUnmount(() => {
               :key="item.label"
               :href="destination(item.href)"
               :aria-current="
-                item.href === '/products' && route.path === '/products' ? 'page' : undefined
+                item.href === '/products' && route.path.startsWith('/products') ? 'page' : undefined
               "
               @click="navigate($event, item.href, item.label)"
               ><span>{{ item.label }}</span
