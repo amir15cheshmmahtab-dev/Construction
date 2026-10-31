@@ -35,6 +35,7 @@ export function useProductCatalog() {
 
   async function updateState(patch: Partial<CatalogState>) {
     clearSearchTimer()
+    if (route.path !== '/products') return
     const next = normalizeCatalogState({
       ...state.value,
       search: searchInput.value,
@@ -122,6 +123,10 @@ export function useProductCatalog() {
   }
 
   function restoreRouteState() {
+    if (route.path !== '/products') {
+      clearSearchTimer()
+      return
+    }
     const signature = querySignature(route.query)
     // A superseded push may settle while the newest selection is still routing.
     if (pendingTarget && signature !== pendingTarget && ownTargets.has(signature)) return

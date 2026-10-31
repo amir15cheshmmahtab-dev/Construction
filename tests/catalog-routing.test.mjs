@@ -17,13 +17,19 @@ let moduleVersion = 0
 async function mountCatalog(initialPath = '/products', previousPath) {
   const router = createRouter({
     history: createMemoryHistory(),
-    routes: [{ path: '/products', component: {} }],
+    routes: [
+      { path: '/products', component: {} },
+      { path: '/products/:slug', component: {} },
+    ],
   })
   if (previousPath) await router.push(previousPath)
   await router.push(initialPath)
   const mounted = []
   const unmounted = []
   const route = {
+    get path() {
+      return router.currentRoute.value.path
+    },
     get query() {
       return router.currentRoute.value.query
     },
@@ -218,6 +224,21 @@ test('a rejected navigation rolls optimistic state back to the actual route', as
     assert.equal(context.catalog.state.value.filters.category, 'cement')
   } finally {
     removeGuard()
+    context.dispose()
+  }
+})
+
+test('leaving the listing for a detail route never canonicalizes the detail query back to listing', async () => {
+  const context = await mountCatalog('/products?category=rebar&page=2')
+  try {
+    context.catalog.searchInput.value = 'pending search'
+    await nextTick()
+    await context.router.push('/products/rebar-16?from=%2Fproducts%3Fcategory%3Drebar')
+    await settle()
+    await delay(290)
+    assert.equal(context.router.currentRoute.value.path, '/products/rebar-16')
+    assert.equal(context.router.currentRoute.value.query.from, '/products?category=rebar')
+  } finally {
     context.dispose()
   }
 })
