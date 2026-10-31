@@ -4,6 +4,9 @@ import type { Product } from '~/types/home'
 import type { CatalogProduct } from '~/types/catalog'
 import { formatToman } from '~/utils/format'
 import { useUiStore } from '~/stores/ui'
+import { useCartStore } from '~/stores/cart'
+import { getCanonicalCardProduct, getCatalogReturnPath } from '~/utils/product-navigation'
+import { getProductOrdering } from '~/utils/product-detail'
 const props = withDefaults(
   defineProps<{ product: Product | CatalogProduct; variant?: 'featured' | 'catalog' }>(),
   {
@@ -11,6 +14,16 @@ const props = withDefaults(
   },
 )
 const ui = useUiStore()
+const cart = useCartStore()
+const route = useRoute()
+const canonicalProduct = computed(() => getCanonicalCardProduct(props.product))
+const favoriteId = computed(() => canonicalProduct.value?.id ?? props.product.id)
+const detailLink = computed(() => ({
+  path: `/products/${canonicalProduct.value?.slug ?? props.product.slug}`,
+  query: {
+    from: getCatalogReturnPath(route.path === '/products' ? route.fullPath : route.query.from),
+  },
+}))
 const catalogProduct = computed(() =>
   props.variant === 'catalog' && 'subcategoryId' in props.product ? props.product : null,
 )
@@ -21,10 +34,23 @@ const availabilityLabel = computed(
     ],
 )
 function requestCart() {
+  const selectedProduct = canonicalProduct.value
+  if (selectedProduct && selectedProduct.priceRial !== null) {
+    const result = cart.addItem({
+      productId: selectedProduct.id,
+      quantity: getProductOrdering(selectedProduct).minimum,
+    })
+    ui.notify(
+      result.success
+        ? 'محصول به سبد نمونهٔ محلی اضافه شد؛ سفارش واقعی ثبت نشده است.'
+        : result.message,
+    )
+    return
+  }
   ui.notify(
-    catalogProduct.value && props.product.priceRial === null
+    selectedProduct?.priceRial === null
       ? 'ثبت استعلام قیمت در مرحله بعد فعال می‌شود؛ درخواست واقعی ارسال نشده است.'
-      : 'سبد خرید در مرحله بعد فعال می‌شود. این محصولات و قیمت‌ها صرفاً نمونه نمایشی هستند.',
+      : 'این محصول در فهرست نمایشی پیدا نشد؛ چیزی به سبد اضافه نشده است.',
   )
 }
 </script>
@@ -46,19 +72,28 @@ function requestCart() {
         loading="lazy"
         decoding="async"
       />
+      <NuxtLink
+        v-if="canonicalProduct"
+        class="product-image-link"
+        :to="detailLink"
+        :aria-label="`مشاهدهٔ ${product.name}`"
+      />
       <button
         class="favorite-button"
-        :class="{ 'is-favorite': ui.favoriteIds.includes(product.id) }"
+        :class="{ 'is-favorite': ui.favoriteIds.includes(favoriteId) }"
         type="button"
-        :aria-label="`${ui.favoriteIds.includes(product.id) ? 'حذف از' : 'افزودن به'} علاقه‌مندی‌ها: ${product.name}`"
-        :aria-pressed="ui.favoriteIds.includes(product.id)"
-        @click="ui.toggleFavorite(product.id)"
+        :aria-label="`${ui.favoriteIds.includes(favoriteId) ? 'حذف از' : 'افزودن به'} علاقه‌مندی‌ها: ${product.name}`"
+        :aria-pressed="ui.favoriteIds.includes(favoriteId)"
+        @click="ui.toggleFavorite(favoriteId)"
       >
         <Heart :size="19" :stroke-width="1.6" aria-hidden="true" />
       </button>
     </div>
     <div class="product-info">
-      <h3>{{ product.name }}</h3>
+      <h3>
+        <NuxtLink v-if="canonicalProduct" :to="detailLink">{{ product.name }}</NuxtLink
+        ><template v-else>{{ product.name }}</template>
+      </h3>
       <p>{{ product.spec }}</p>
       <div v-if="catalogProduct" class="catalog-card-meta">
         <span class="catalog-stock" :class="`catalog-stock--${product.availability}`"
@@ -86,3 +121,20 @@ function requestCart() {
     </button>
   </article>
 </template>
+
+<style scoped>
+.product-image-link {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+.product-image-link:focus-visible {
+  outline-offset: -4px;
+}
+.favorite-button {
+  z-index: 1;
+}
+.product-info h3 a:hover {
+  color: var(--color-bronze-action);
+}
+</style>
