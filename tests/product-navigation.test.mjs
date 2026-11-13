@@ -34,6 +34,28 @@ test('return links retain only canonical listing state and cannot become externa
     assert.equal(getCatalogReturnPath(value), '/products')
 })
 
+test('trailing-slash return links retain canonical filters without accepting other paths', () => {
+  assert.equal(getCatalogReturnPath('/products/'), '/products')
+  assert.equal(
+    getCatalogReturnPath('/products/?category=rebar&sort=price-asc&page=2&tracking=1'),
+    '/products?category=rebar&sort=price-asc&page=2',
+  )
+  assert.equal(
+    getCatalogReturnPath('/products/?category=tiles'),
+    '/products?category=stone&subcategory=ceramic',
+  )
+  for (const value of [
+    '/products//?category=rebar',
+    '/products/../products?category=rebar',
+    '/products/%2e%2e/products?category=rebar',
+    '/products/%2f?category=rebar',
+    '/products/#hash',
+    '//evil.test/products/?category=rebar',
+    'https://evil.test/products/?category=rebar',
+  ])
+    assert.equal(getCatalogReturnPath(value), '/products')
+})
+
 test('only explicit SKU variant navigation retains the purchase panel scroll position', async () => {
   const { shouldResetProductScroll } = await import('../app/utils/product-navigation.ts')
   assert.equal(shouldResetProductScroll('rebar-18', 'rebar-16'), false)

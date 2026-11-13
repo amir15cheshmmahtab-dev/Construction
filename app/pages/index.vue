@@ -3,7 +3,8 @@ import { brand, homepageData } from '~/data/home'
 
 const { data } = useHomepageData()
 const home = computed(() => data.value ?? homepageData)
-const image = new URL('/images/hero/residence.webp', useRequestURL().origin).href
+const siteUrl = useSiteUrl()
+const image = siteUrl('/images/hero/residence.webp')
 
 useSeoMeta({
   title: `${brand.name} | همه‌چیز برای ساختن یک آینده بهتر`,

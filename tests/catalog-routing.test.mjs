@@ -212,6 +212,42 @@ test('direct aliases and out-of-range pages canonicalize once without creating h
   }
 })
 
+test('a trailing-slash listing supports sorting and restores its filters with Back and Forward', async () => {
+  const context = await mountCatalog('/products/?category=rebar')
+  try {
+    await context.catalog.setSort('price-asc')
+    await settle()
+    assert.deepEqual(context.router.currentRoute.value.query, {
+      category: 'rebar',
+      sort: 'price-asc',
+    })
+    context.router.back()
+    await settle()
+    assert.equal(context.router.currentRoute.value.path, '/products/')
+    assert.equal(context.catalog.state.value.filters.category, 'rebar')
+    assert.equal(context.catalog.state.value.sort, 'recommended')
+    context.router.forward()
+    await settle()
+    assert.equal(context.catalog.state.value.sort, 'price-asc')
+  } finally {
+    context.dispose()
+  }
+})
+
+test('a trailing-slash listing canonicalizes direct aliases and invalid query state', async () => {
+  const context = await mountCatalog('/products/?category=tiles&page=999&unknown=value')
+  try {
+    assert.deepEqual(context.router.currentRoute.value.query, {
+      category: 'stone',
+      subcategory: 'ceramic',
+    })
+    assert.equal(context.catalog.state.value.page, 1)
+    assert.equal(context.catalog.results.value.total, 3)
+  } finally {
+    context.dispose()
+  }
+})
+
 test('a rejected navigation rolls optimistic state back to the actual route', async () => {
   const context = await mountCatalog('/products?category=cement')
   const removeGuard = context.router.beforeEach((to) => to.query.category !== 'tools')

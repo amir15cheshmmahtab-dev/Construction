@@ -40,9 +40,9 @@ const keyFacts = detail.specifications
   .filter((group) => group.id !== 'sale')
   .flatMap((group) => group.items)
   .slice(0, 4)
-const origin = useRequestURL().origin
-const canonical = new URL(`/products/${product.slug}`, origin).href
-const image = new URL(product.image, origin).href
+const siteUrl = useSiteUrl()
+const canonical = siteUrl(`/products/${product.slug}`)
+const image = siteUrl(product.image)
 useSeoMeta({
   title: `${product.name} | ${brand.name}`,
   description: `${product.name}؛ ${product.spec}. مشاهده مشخصات، واحد فروش و اطلاعات خرید نمونه در سیوان.`,
@@ -66,12 +66,12 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'خانه', item: new URL('/', origin).href },
+          { '@type': 'ListItem', position: 1, name: 'خانه', item: siteUrl('/') },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'محصولات',
-            item: new URL('/products', origin).href,
+            item: siteUrl('/products'),
           },
           { '@type': 'ListItem', position: 3, name: product.name, item: canonical },
         ],

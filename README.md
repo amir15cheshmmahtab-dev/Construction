@@ -24,6 +24,20 @@ npm run preview
 
 `postinstall` runs `nuxt prepare`, which generates the application TypeScript and ESLint configurations. Commit `package-lock.json` and use `npm ci` for reproducible installs. `npm run format` applies Prettier formatting. `npm test` runs the full behavior suite; `npm run test:catalog` and `npm run test:products` run the listing and product-detail/cart/navigation subsets.
 
+## Live site and deployment
+
+The live site is [Sivan on GitHub Pages](https://amir15cheshmmahtab-dev.github.io/Construction/).
+Push committed changes to `main` to publish them. The Pages workflow runs type checking,
+lint and tests, then prerenders the homepage, catalog and every product detail page.
+It verifies the generated pages, asset paths and public metadata before deploying.
+
+To reproduce the Pages build locally:
+
+```sh
+NUXT_APP_BASE_URL=/Construction/ NUXT_PUBLIC_SITE_URL=https://amir15cheshmmahtab-dev.github.io npx nuxt build --preset github_pages
+npm run verify:pages
+```
+
 ## Stack and compatibility
 
 Direct dependencies are pinned in `package.json`: Nuxt 4.5.2, Vue 3.5.44, Tailwind CSS 4.3.3, Pinia 4.1.0 with `@pinia/nuxt` 1.0.3, TanStack Vue Query 5.105.0 with `@peterbud/nuxt-query` 1.12.0, and Lucide Vue icons. Development checks use TypeScript, vue-tsc, Nuxt ESLint, ESLint, and Prettier.

@@ -35,7 +35,7 @@ export function useProductCatalog() {
 
   async function updateState(patch: Partial<CatalogState>) {
     clearSearchTimer()
-    if (route.path !== '/products') return
+    if (route.path !== '/products' && route.path !== '/products/') return
     const next = normalizeCatalogState({
       ...state.value,
       search: searchInput.value,
@@ -123,7 +123,7 @@ export function useProductCatalog() {
   }
 
   function restoreRouteState() {
-    if (route.path !== '/products') {
+    if (route.path !== '/products' && route.path !== '/products/') {
       clearSearchTimer()
       return
     }

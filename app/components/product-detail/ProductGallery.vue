@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Image, Maximize2, Minus, Plus, RotateCcw, X } fr
 import type { ProductImage } from '~/types/product-detail'
 import { formatNumber } from '~/utils/format'
 
+const { publicAsset } = usePublicAssets()
 const props = defineProps<{ images: readonly ProductImage[]; productName: string }>()
 const images = computed(() => {
   const seen = new Set<string>()
@@ -126,7 +127,7 @@ onBeforeUnmount(() => {
       <img
         :key="activeImage.src"
         class="pd-gallery-main-image"
-        :src="activeImage.src"
+        :src="publicAsset(activeImage.src)"
         :alt="activeImage.alt"
         :width="activeImage.width"
         :height="activeImage.height"
@@ -157,7 +158,14 @@ onBeforeUnmount(() => {
         :aria-label="`تصویر ${formatNumber(index + 1)}: ${image.alt}`"
         @click="selectImage(index)"
       >
-        <img :src="image.src" alt="" width="88" height="88" loading="lazy" decoding="async" />
+        <img
+          :src="publicAsset(image.src)"
+          alt=""
+          width="88"
+          height="88"
+          loading="lazy"
+          decoding="async"
+        />
       </button>
     </div>
     <p class="pd-gallery-image-note">
@@ -197,7 +205,7 @@ onBeforeUnmount(() => {
             >
               <img
                 v-if="activeImage"
-                :src="activeImage.src"
+                :src="publicAsset(activeImage.src)"
                 :alt="activeImage.alt"
                 :width="activeImage.width"
                 :height="activeImage.height"

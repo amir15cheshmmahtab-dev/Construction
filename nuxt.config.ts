@@ -1,5 +1,6 @@
 import tailwindcss from '@tailwindcss/vite'
 import { brand } from './app/data/brand'
+import { catalogProducts } from './app/data/catalog'
 
 export default defineNuxtConfig({
   // Stable baseline recommended by Nuxt's current Tailwind 4 installation guide.
@@ -8,6 +9,15 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@pinia/nuxt', '@peterbud/nuxt-query', '@nuxt/eslint'],
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: { siteUrl: '' },
+  },
+  nitro: {
+    prerender: {
+      routes: ['/products', ...catalogProducts.map((product) => `/products/${product.slug}`)],
+      failOnError: true,
+    },
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'fa', dir: 'rtl' },
@@ -17,16 +27,6 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content: `${brand.name}؛ تجربه‌ای تازه برای انتخاب مصالح، تجهیزات ساختمانی و ایده‌های بازسازی در تهران.`,
-        },
-      ],
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: brand.logo },
-        {
-          rel: 'preload',
-          href: '/fonts/Vazirmatn-Variable.woff2',
-          as: 'font',
-          type: 'font/woff2',
-          crossorigin: '',
         },
       ],
     },

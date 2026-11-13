@@ -3,7 +3,8 @@ import { brand } from '~/data/brand'
 import { catalogCategories } from '~/data/catalog-filters'
 const catalog = useProductCatalog()
 const filterDrawerOpen = ref(false)
-const canonical = new URL('/products', useRequestURL().origin).href
+const siteUrl = useSiteUrl()
+const canonical = siteUrl('/products')
 
 useSeoMeta({
   title: `تمام محصولات ساختمانی | ${brand.name}`,

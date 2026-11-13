@@ -7,7 +7,7 @@ interface BusinessAction {
 interface BusinessPromotion {
   image: {
     src: string
-    srcset: string
+    widths: number[]
     alt: string
     width: number
     height: number
@@ -23,8 +23,7 @@ export const businessPromotion: BusinessPromotion = {
   // Public assets are runtime URLs, not imports for Vite's asset pipeline.
   image: {
     src: '/images/business/showroom-consultation.webp',
-    srcset:
-      '/images/business/showroom-consultation-640.webp 640w, /images/business/showroom-consultation-960.webp 960w, /images/business/showroom-consultation.webp 1920w',
+    widths: [640, 960, 1920],
     alt: 'معمار و متخصصان ساخت‌وساز در شوروم مصالح، در حال بررسی نمونه‌های سنگ، سرامیک و فلز روی نقشه‌های پروژه',
     width: 1920,
     height: 685,

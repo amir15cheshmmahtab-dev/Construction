@@ -9,6 +9,7 @@
     "dev": "nuxt dev",
     "build": "nuxt build",
     "preview": "nuxt preview",
+    "verify:pages": "node scripts/verify-pages.mjs",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
     "lint": "eslint .",

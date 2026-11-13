@@ -2,13 +2,14 @@
 import { useUiStore } from '~/stores/ui'
 import { businessPromotion } from '~/data/business'
 const ui = useUiStore()
+const { publicAsset, imageSrcset } = usePublicAssets()
 </script>
 
 <template>
   <div class="business-banner">
     <img
-      :src="businessPromotion.image.src"
-      :srcset="businessPromotion.image.srcset"
+      :src="publicAsset(businessPromotion.image.src)"
+      :srcset="imageSrcset(businessPromotion.image.src, businessPromotion.image.widths)"
       sizes="100vw"
       :alt="businessPromotion.image.alt"
       :width="businessPromotion.image.width"

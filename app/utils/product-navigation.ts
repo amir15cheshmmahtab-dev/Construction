@@ -20,9 +20,13 @@ export function getCanonicalCardProduct(product: Pick<Product, 'id' | 'slug'>) {
 /** Only a canonical local listing URL may be used as a detail page's return link. */
 export function getCatalogReturnPath(value: unknown): string {
   if (typeof value !== 'string' || value.length > 4096) return '/products'
-  if (value !== '/products' && !value.startsWith('/products?')) return '/products'
+  if (!/^\/products\/?(?:\?|$)/.test(value)) return '/products'
   const url = new URL(value, 'https://sivan.invalid')
-  if (url.origin !== 'https://sivan.invalid' || url.pathname !== '/products') return '/products'
+  if (
+    url.origin !== 'https://sivan.invalid' ||
+    (url.pathname !== '/products' && url.pathname !== '/products/')
+  )
+    return '/products'
   const query = serializeCatalogQuery(parseCatalogQuery(Object.fromEntries(url.searchParams)))
   const encoded = new URLSearchParams(query).toString()
   return `/products${encoded ? `?${encoded}` : ''}`

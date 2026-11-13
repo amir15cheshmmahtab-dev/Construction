@@ -4,6 +4,7 @@ import type { Category } from '~/types/home'
 import { useUiStore } from '~/stores/ui'
 defineProps<{ categories: Category[] }>()
 const ui = useUiStore()
+const { publicAsset, imageSrcset } = usePublicAssets()
 </script>
 
 <template>
@@ -18,8 +19,8 @@ const ui = useUiStore()
       >
         <div class="category-image">
           <img
-            :src="category.image"
-            :srcset="`${category.image.replace('.webp', '-320.webp')} 320w, ${category.image} 640w`"
+            :src="publicAsset(category.image)"
+            :srcset="imageSrcset(category.image, [320, 640])"
             sizes="(max-width: 767px) 33vw, 14vw"
             :alt="category.name"
             width="640"

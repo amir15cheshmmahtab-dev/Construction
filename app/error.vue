@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-vue-next'
 import { brand } from '~/data/brand'
 const props = defineProps<{ error: NuxtError }>()
 const missing = computed(() => props.error.statusCode === 404)
+const { publicAsset } = usePublicAssets()
 useSeoMeta({
   title: () => `${missing.value ? 'صفحه پیدا نشد' : 'خطا در نمایش صفحه'} | ${brand.name}`,
   robots: 'noindex, nofollow',
@@ -30,7 +31,7 @@ useSeoMeta({
       >
         مشاهدهٔ محصولات<ArrowLeft :size="18" aria-hidden="true" />
       </button>
-      <a class="error-home" href="/">بازگشت به خانه</a>
+      <a class="error-home" :href="publicAsset('/')">بازگشت به خانه</a>
     </div>
   </main>
 </template>

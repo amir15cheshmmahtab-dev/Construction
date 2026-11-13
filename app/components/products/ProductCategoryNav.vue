@@ -2,6 +2,7 @@
 import { LayoutGrid } from 'lucide-vue-next'
 import type { CatalogCategory } from '~/types/catalog'
 
+const { publicAsset } = usePublicAssets()
 defineProps<{
   modelValue: string | null
   categories: readonly CatalogCategory[]
@@ -31,7 +32,14 @@ const emit = defineEmits<{ 'update:modelValue': [category: string | null] }>()
         :aria-pressed="modelValue === category.id"
         @click="emit('update:modelValue', category.id)"
       >
-        <img :src="category.image" alt="" width="48" height="48" loading="lazy" decoding="async" />
+        <img
+          :src="publicAsset(category.image)"
+          alt=""
+          width="48"
+          height="48"
+          loading="lazy"
+          decoding="async"
+        />
         <span>{{ category.name }}</span>
       </button>
     </div>

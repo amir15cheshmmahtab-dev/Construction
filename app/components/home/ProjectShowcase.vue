@@ -4,6 +4,7 @@ import type { Project } from '~/types/home'
 import { useUiStore } from '~/stores/ui'
 defineProps<{ projects: Project[] }>()
 const ui = useUiStore()
+const { publicAsset, imageSrcset } = usePublicAssets()
 </script>
 
 <template>
@@ -36,8 +37,8 @@ const ui = useUiStore()
         @click="ui.notify(`راهنمای «${project.name}» در مرحله بعد در دسترس قرار می‌گیرد.`)"
       >
         <img
-          :src="project.image"
-          :srcset="`${project.image.replace('.webp', '-480.webp')} 480w, ${project.image} 900w`"
+          :src="publicAsset(project.image)"
+          :srcset="imageSrcset(project.image, [480, 900])"
           sizes="(max-width: 767px) 43vw, (max-width: 1023px) 22vw, 19vw"
           :alt="project.description"
           width="900"

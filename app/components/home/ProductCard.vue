@@ -14,6 +14,7 @@ const props = withDefaults(
   },
 )
 const ui = useUiStore()
+const { publicAsset, imageSrcset } = usePublicAssets()
 const cart = useCartStore()
 const route = useRoute()
 const canonicalProduct = computed(() => getCanonicalCardProduct(props.product))
@@ -21,7 +22,9 @@ const favoriteId = computed(() => canonicalProduct.value?.id ?? props.product.id
 const detailLink = computed(() => ({
   path: `/products/${canonicalProduct.value?.slug ?? props.product.slug}`,
   query: {
-    from: getCatalogReturnPath(route.path === '/products' ? route.fullPath : route.query.from),
+    from: getCatalogReturnPath(
+      /^\/products\/?$/.test(route.path) ? route.fullPath : route.query.from,
+    ),
   },
 }))
 const catalogProduct = computed(() =>
@@ -59,8 +62,8 @@ function requestCart() {
   <article class="product-card" :class="{ 'product-card--catalog': catalogProduct }">
     <div class="product-image-wrap">
       <img
-        :src="product.image"
-        :srcset="`${product.image.replace('.webp', '-320.webp')} 320w, ${product.image} 640w`"
+        :src="publicAsset(product.image)"
+        :srcset="imageSrcset(product.image, [320, 640])"
         :sizes="
           catalogProduct
             ? '(max-width: 767px) 45vw, (max-width: 1023px) 30vw, 22vw'
