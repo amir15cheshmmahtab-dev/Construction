@@ -7,7 +7,7 @@ interface BusinessAction {
 interface BusinessPromotion {
   image: {
     src: string
-    srcset: string
+    widths: number[]
     alt: string
     width: number
     height: number
@@ -23,8 +23,7 @@ export const businessPromotion: BusinessPromotion = {
   // Public assets are runtime URLs, not imports for Vite's asset pipeline.
   image: {
     src: '/images/business/partnership.webp',
-    srcset:
-      '/images/business/partnership-640.webp 640w, /images/business/partnership-960.webp 960w, /images/business/partnership.webp 1920w',
+    widths: [640, 960, 1920],
     alt: 'همکاری نمایندگان تأمین‌کننده مصالح و شرکت ساختمانی در جلسه بررسی نمونه‌های مصالح و نقشه پروژه',
     width: 1920,
     height: 686,

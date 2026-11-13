@@ -19,16 +19,6 @@ export default defineNuxtConfig({
           content: `${brand.name}؛ تجربه‌ای تازه برای انتخاب مصالح، تجهیزات ساختمانی و ایده‌های بازسازی در تهران.`,
         },
       ],
-      link: [
-        { rel: 'icon', type: 'image/svg+xml', href: brand.logo },
-        {
-          rel: 'preload',
-          href: '/fonts/Vazirmatn-Variable.woff2',
-          as: 'font',
-          type: 'font/woff2',
-          crossorigin: '',
-        },
-      ],
     },
   },
   typescript: { strict: true },

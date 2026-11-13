@@ -5,14 +5,15 @@ import { formatToman } from '~/utils/format'
 import { useUiStore } from '~/stores/ui'
 defineProps<{ product: Product }>()
 const ui = useUiStore()
+const { publicAsset, imageSrcset } = usePublicAssets()
 </script>
 
 <template>
   <article class="product-card">
     <div class="product-image-wrap">
       <img
-        :src="product.image"
-        :srcset="`${product.image.replace('.webp', '-320.webp')} 320w, ${product.image} 640w`"
+        :src="publicAsset(product.image)"
+        :srcset="imageSrcset(product.image, [320, 640])"
         sizes="(max-width: 767px) 46vw, 16vw"
         :alt="product.name"
         width="640"

@@ -1,22 +1,16 @@
 <script setup lang="ts">
 import type { Category, Product } from '~/types/home'
 defineProps<{ products: Product[]; categories: Category[] }>()
+const { publicAsset, imageSrcset } = usePublicAssets()
+const heroImage = '/images/hero/residence.webp'
 </script>
 
 <template>
   <section class="home-hero" aria-labelledby="hero-title">
     <picture class="hero-picture">
-      <source
-        srcset="
-          /images/hero/residence-640.webp  640w,
-          /images/hero/residence-960.webp  960w,
-          /images/hero/residence.webp     1920w
-        "
-        sizes="100vw"
-        type="image/webp"
-      />
+      <source :srcset="imageSrcset(heroImage, [640, 960, 1920])" sizes="100vw" type="image/webp" />
       <img
-        src="/images/hero/residence.webp"
+        :src="publicAsset(heroImage)"
         alt="خانه‌ای معاصر با نمای سنگ و بتن و نور گرم معماری در میان درختان"
         width="1920"
         height="768"
